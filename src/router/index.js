@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    component: () => import('../views/front/frontLayout.vue'),
+    component: () => import('../views/front/FrontLayout.vue'),
     children: [
       {
         path: 'home',
@@ -48,7 +48,7 @@ const routes = [
       },
       {
         path: 'knowledge',
-        component: () => import('../views/front/knowledgeView.vue'),
+        component: () => import('../views/front/KnowledgeView.vue'),
         meta: { title: '文章列表' }
       },
       {
@@ -103,7 +103,10 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   linkActiveClass: 'active',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    // 始終滾動到頂部
+    return { top: 0 }
+  }
 })
-
 export default router

@@ -14,13 +14,13 @@
                   <img class="col-4 object-fit p-1 w-100 img-fluid" :src="item.product?.imageUrl" alt="order-img" height="150">
                 </div>
                 <div class="col-3">
-                  <span class="fs-6 fs-md-4 mb-0">{{item.product?.title}}</span>
+                  <span class="fs-6 fs-md-4 mb-0">{{ item.product?.title }}</span>
                 </div>
                 <div class="col-3 text-end">
-                  <span class="fs-6 fs-md-4">{{$filters.currency(item.product?.price)}}</span>
+                  <span class="fs-6 fs-md-4">{{ $filters.currency(item.product?.price) }}</span>
                 </div>
                 <div class="col-2 text-end">
-                  <span class="col-2 fs-6 fs-md-4">X{{item.qty}}</span>
+                  <span class="col-2 fs-6 fs-md-4">X{{ item.qty }}</span>
                 </div>
               </div>
               <div class="d-flex justify-content-center">
@@ -30,10 +30,10 @@
               <div class="d-flex justify-content-between fs-5">
                 <span>總和</span>
                 <template v-if="discoutStatus">
-                  <span>{{$filters.currency(final_total)}}</span>
+                  <span>{{ $filters.currency(final_total) }}</span>
                 </template>
                 <template v-else>
-                  <span>{{$filters.currency(total)}}</span>
+                  <span>{{ $filters.currency(total) }}</span>
                 </template>
               </div>
             </div>
@@ -90,8 +90,8 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cart'
-import status from '../../stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import Swal from 'sweetalert2'
@@ -117,7 +117,7 @@ export default {
     ...mapState(cartStore, ['carts']), // 取用cart store內的狀態資料(資料)
     ...mapState(cartStore, ['final_total']), // cart總價
     ...mapState(cartStore, ['total', 'isLoading']),
-    ...mapState(status, ['isLoading'])
+    ...mapState(statusStore, ['isLoading'])
   },
   methods: {
     ...mapActions(cartStore, ['getCarts']), // 取用cart store內的狀態資料(方法)
@@ -130,13 +130,9 @@ export default {
       const coupon = {
         code: this.couponCode
       }
-      console.log(coupon)
       this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/coupon`, { data: coupon })
         .then((res) => {
-          console.log(res)
           this.discoutStatus = res.data.success
-          // this.final_total = res.data.final_total
-          // alert(res.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -146,7 +142,6 @@ export default {
           })
         })
         .catch((err) => {
-          // alert(err.response.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -159,9 +154,14 @@ export default {
       this.couponCode = ''
     },
     sendOrder () {
-      console.log(this.carts.length)
       if (this.carts.length === 0) {
-        alert('購物車清單內為空')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: '購物車清單內為空',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         const data = {
           user: {
@@ -175,11 +175,9 @@ export default {
         const loader = this.$loading.show()
         this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/order`, { data })
           .then(res => {
-            console.log('送出訂單:', res)
             this.getCarts()
             this.loadingItem = ''
             this.$refs.form.resetForm()
-            // alert('訂單已送出')
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -197,6 +195,7 @@ export default {
               showConfirmButton: false,
               timer: 1500
             })
+            loader.hide()
           })
       }
     }

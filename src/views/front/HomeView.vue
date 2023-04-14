@@ -195,10 +195,10 @@ import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/thumbs'
-import cartStore from '../../stores/cart'
+import cartStore from '@/stores/cartStore'
 import { Navigation, Pagination } from 'swiper'
 import { mapState } from 'pinia'
-import BannerCompoment from '../../components/BannerCompoment.vue'
+import BannerCompoment from '@/components/BannerCompoment.vue'
 export default {
   data () {
     return {

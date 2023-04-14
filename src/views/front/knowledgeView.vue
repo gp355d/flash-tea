@@ -29,6 +29,7 @@
 
 <script>
 import Pagination from '../../components/PaginationView.vue'
+import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -42,10 +43,17 @@ export default {
       const loader = this.$loading.show()
       this.$http.get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/articles`)
         .then((res) => {
-          console.log(res)
           this.articles = res.data.articles
           this.pagination = res.data.pagination
           loader.hide()
+        }).catch((err) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

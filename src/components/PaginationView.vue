@@ -8,7 +8,7 @@
       </li>
       <li class="page-item" v-for="page in pages.total_pages" :key="page" :class="{ active: pages.current_page === page }">
         <span class="page-link" v-if="page === pages.current_page">{{ page }}</span>
-        <a class="page-link" v-else  @click.prevent="() => updatePage(page)">{{ page }}</a>
+        <a class="page-link" href="#" v-else  @click.prevent="() => updatePage(page)">{{ page }}</a>
       </li>
       <li class="page-item" :class="{ disabled: !pages.has_next }">
         <a class="page-link" href="#" aria-label="Next" @click.prevent="() => updatePage(pages.current_page + 1)">

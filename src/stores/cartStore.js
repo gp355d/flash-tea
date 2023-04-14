@@ -43,7 +43,6 @@ const cartStore = defineStore('cart', {
       this.loadingItem = productId + '1'
       axios.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`, data)
         .then((res) => {
-          console.log(res)
           this.getCarts()
           Swal.fire({
             position: 'top-end',
@@ -54,7 +53,6 @@ const cartStore = defineStore('cart', {
           })
           this.loadingItem = ''
         }).catch((err) => {
-          console.log(err.res.data)
           Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -62,15 +60,15 @@ const cartStore = defineStore('cart', {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadingItem = ''
         })
     },
     clearCart () {
       this.loadingItem = 'deleteAll'
       axios.delete(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/carts`)
-        .then(res => {
+        .then(() => {
           this.getCarts()
           this.loadingItem = ''
-          // alert('購物車已清空')
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -86,6 +84,7 @@ const cartStore = defineStore('cart', {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadingItem = ''
         })
     },
     updateCartItem (item) { // 購物車的id,產品的id
@@ -98,21 +97,26 @@ const cartStore = defineStore('cart', {
         .then(res => {
           this.getCarts()
           this.loadingItem = ''
-          // alert('商品數量已更新！')
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: res.data.message,
+            title: '商品數量已更新！',
             showConfirmButton: false,
             timer: 1500
           })
         }).catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.loadingItem = ''
         })
     },
     deleteItem (item) {
       this.loadingItem = item.id
-      // const loader = this.$loading.show()
       axios.delete(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart/${item.id}`)
         .then((res) => {
           Swal.fire({
@@ -122,6 +126,7 @@ const cartStore = defineStore('cart', {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadingItem = ''
           this.getCarts()
         }).catch((err) => {
           Swal.fire({
@@ -131,6 +136,7 @@ const cartStore = defineStore('cart', {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadingItem = ''
         })
     }
   }

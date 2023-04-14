@@ -90,12 +90,7 @@
 </div>
 </template>
 <script>
-// import { mapState } from 'pinia'
 import Swal from 'sweetalert2'
-// import cartStore from '../../stores/cart'
-// import status from '../../stores/statusStore'
-// import Loading from 'vue-loading-overlay'
-// import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -106,24 +101,14 @@ export default {
       }
     }
   },
-  // computed: {
-  //   ...mapState(cartStore, ['isLoading']),
-  //   ...mapState(status, ['isLoading'])
-  // },
   methods: {
     getOrder () {
       const orderId = this.$route.params.order_id
-      // console.log(this.$route.params)
       const loader = this.$loading.show()
       this.$http.get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/order/${orderId}`)
         .then((res) => {
           const { order } = res.data
           this.order = order
-          // console.log(res.data.order.products)// res.data.order.products.product.price, res.data.order.products.qty
-          //  order.products['-NQB8IpoU-mqce9kzwNo'].product.title
-          // this.orders.title = products.title
-          // this.orders.price = products.price
-          // this.orders.qty = products.qty
           loader.hide()
         }).catch((err) => {
           Swal.fire({
@@ -133,15 +118,14 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+          loader.hide()
         })
     },
     pay () {
       const orderId = this.$route.params.order_id
-      // console.log(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/pay/${orderId}`)
       const loader = this.$loading.show()
       this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/pay/${orderId}`)
         .then((res) => {
-          console.log(res)
           this.getOrder()
           loader.hide()
           Swal.fire({
@@ -154,10 +138,6 @@ export default {
         })
     }
   },
-
-  // components: {
-  //   Loading
-  // },
   mounted () {
     this.getOrder()
   }

@@ -5,7 +5,6 @@
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
           <h5 class="modal-title" id="exampleModalLabel">
-            {{tempArticle.content}}
             <span v-if="isNew">新增貼文</span>
             <span v-else>編輯貼文</span>
           </h5>
@@ -14,30 +13,38 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-              <div class="mb-3">
-                <label for="title" class="form-label">標題</label>
-                <input type="text" class="form-control" id="title" v-model="tempArticle.title" placeholder="請輸入標題" />
-              </div>
-              <div class="mb-3">
-                <label for="image" class="form-label">輸入圖片網址</label>
-                <input type="text" class="form-control" id="image" v-model="tempArticle.imgurl" placeholder="請輸入圖片連結" />
-              </div>
-              <div class="mb-3">
-                <label for="author" class="form-label">作者</label>
-                <input type="text" class="form-control" id="author" v-model="tempArticle.author" placeholder="請輸入標題" />
-              </div>
-              <div class="mb-3">
-                <label for="create_at">文章建立日期</label>
-                <input type="date" class="form-control" id="create_at" v-model="create_at" />
-              </div>
+              <v-form v-slot="{ errors }">
+                <div class="mb-3">
+                  <label for="title" class="form-label">標題</label>
+                  <v-field type="text" name="標題" class="form-control" id="title" v-model="tempArticle.title" placeholder="請輸入標題"
+                  :class="{ 'is-invalid': errors['標題'] }" rules="required"></v-field>
+                  <error-message name="標題" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3">
+                  <label for="image" class="form-label">輸入圖片網址</label>
+                  <v-field type="text" name="圖片網址" class="form-control" id="image" v-model="tempArticle.imgurl" placeholder="請輸入圖片連結"
+                  :class="{ 'is-invalid': errors['圖片網址'] }" rules="required"></v-field>
+                  <error-message name="圖片網址" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3">
+                  <label for="author" class="form-label">作者</label>
+                  <v-field type="text" name="作者" class="form-control" id="author" v-model="tempArticle.author" placeholder="請輸入標題"
+                  :class="{ 'is-invalid': errors['作者'] }" rules="required"></v-field>
+                  <error-message name="作者" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3">
+                  <label for="create_at">文章建立日期</label>
+                  <input type="date" name="文章建立日期" class="form-control" id="create_at" v-model="create_at"/>
+                </div>
+              </v-form>
             </div>
             <div class="col-sm-8">
               <label for="tag" class="form-label">標籤</label>
               <div class="row gx-1 mb-3">
                 <div class="col-md-2 mb-1" v-for="(label, key) in tempArticle.tag" :key="key">
                   <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control" id="tag" v-model="tempArticle.tag[key]"
-                      placeholder="請輸入標籤" />
+                    <v-field type="text" class="form-control form-control" id="tag" v-model="tempArticle.tag[key]"
+                      placeholder="請輸入標籤"></v-field>
                     <button type="button" class="btn btn-outline-danger" @click="() => tempArticle.tag.splice(key, 1)">
                       <i class="bi bi-x"></i>
                     </button>
@@ -85,7 +92,7 @@
   </div>
 </template>
 <script>
-import mixin from '../mixins/mixin'
+import mixin from '@/mixins/mixin'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 export default {
   props: {

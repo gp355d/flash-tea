@@ -33,7 +33,7 @@
 
 <script>
 
-import mixin from '../mixins/mixin'
+import mixin from '@/mixins/mixin'
 export default {
   data () {
     return {
@@ -46,7 +46,6 @@ export default {
   props: ['tempItems', 'id'],
   mixins: [mixin],
   mounted () {
-    console.log('1', typeof this.id)
     if (this.id === 1) {
       this.state = '商品'
     } else if (this.id === 2) {

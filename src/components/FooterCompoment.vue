@@ -3,9 +3,9 @@
     <footer class="footer py-7 py-md-8 text-primary bg-white">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light d-lg-flex justify-content-center justify-content-lg-between flex-lg-row d-block flex-column">
-            <a href="#" class="d-block text-center mb-7 mb-md-0">
+            <router-link href="#" to="/home" class="d-block text-center mb-7 mb-md-0">
               <img src="../assets/images/logo.svg" alt="logo">
-            </a>
+            </router-link>
             <div class="text-center d-block justify-content-center align-items-center pb-7 pb-md-0" id="navbarNav">
               <ul class="menu d-block d-lg-flex align-items-center list-unstyled mb-0">
                 <li class="nav-item pe-0 pe-lg-7 mb-7 mb-md-0">

@@ -48,33 +48,40 @@
               </div>
             </div>
             <div class="col-sm-8">
+              <v-form v-slot="{ errors }">
               <div class="mb-3">
                 <label for="title" class="form-label">標題</label>
-                <input id="title" type="text" class="form-control" placeholder="請輸入標題" v-model="tempProduct.title">
+                <v-field id="title" name="標題" type="text" class="form-control" placeholder="請輸入標題" v-model="tempProduct.title" :class="{ 'is-invalid': errors['標題'] }"
+                    rules="required"></v-field>
+                    <error-message name="標題" class="invalid-feedback"></error-message>
               </div>
-
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="category" class="form-label">分類</label>
-                  <input id="category" type="text" class="form-control" placeholder="請輸入分類"
-                    v-model="tempProduct.category">
+                  <v-field id="category" name="分類" type="text" class="form-control" placeholder="請輸入分類" v-model="tempProduct.category" :class="{ 'is-invalid': errors['分類'] }"
+                  rules="required"></v-field>
+                  <error-message name="分類" class="invalid-feedback"></error-message>
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label">單位</label>
-                  <input id="unit" type="text" class="form-control" placeholder="請輸入單位" v-model="tempProduct.unit">
+                  <v-field id="unit" name="單位" type="text" class="form-control" placeholder="請輸入單位" v-model="tempProduct.unit" :class="{ 'is-invalid': errors['單位'] }"
+                  rules="required"></v-field>
+                  <error-message name="單位" class="invalid-feedback"></error-message>
                 </div>
               </div>
 
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="origin_price" class="form-label">原價</label>
-                  <input id="origin_price" type="number" min="0" class="form-control" placeholder="請輸入原價"
-                    v-model.number="tempProduct.origin_price">
+                  <v-field id="origin_price" name="原價" type="number" min="0" class="form-control" placeholder="請輸入原價" v-model.number="tempProduct.origin_price" :class="{ 'is-invalid': errors['原價'] }"
+                  rules="required"></v-field>
+                  <error-message name="原價" class="invalid-feedback"></error-message>
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label">售價</label>
-                  <input id="price" type="number" min="0" class="form-control" placeholder="請輸入售價"
-                    v-model.number="tempProduct.price">
+                  <v-field id="price" name="售價" type="number" min="0" class="form-control" placeholder="請輸入售價" v-model.number="tempProduct.price" :class="{ 'is-invalid': errors['售價'] }"
+                  rules="required"></v-field>
+                  <error-message name="售價" class="invalid-feedback"></error-message>
                 </div>
               </div>
               <hr>
@@ -94,6 +101,7 @@
                   <label class="form-check-label" for="is_enabled">是否啟用</label>
                 </div>
               </div>
+            </v-form>
             </div>
           </div>
           <div class="modal-footer">
@@ -107,8 +115,9 @@
 </template>
 
 <script>
-import mixin from '../mixins/mixin'
+import mixin from '@/mixins/mixin'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   props: {
@@ -155,8 +164,13 @@ export default {
         }
       }).catch((err) => {
         this.status.fileUploading = false
-        console.log(err.response.data.message)
-        alert(err.response.data.message)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     }
   },

@@ -4,10 +4,10 @@
   <div class="row justify-content-center">
     <div class="col-md-9">
       <div class="row mb-4 pb-4">
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
+        <div class="col-lg-6 d-flex justify-content-center">
           <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
         </div>
-        <div class="col-12 col-lg-6 d-flex align-items-center p-4">
+        <div class="col-lg-6 d-flex align-items-center p-4">
           <div class="p-4 bg-white shadow-sm" style="border-radius:40px;">
             <h3 class="text-center fs-4 fw-bold">黑心茶葉氾濫</h3>
             <p>近幾年市面出現各種黑心茶葉，它可能含有有害化學物質、污染物或人工添加物。這些茶葉可能來自未經嚴格把關的產區，或者是在過程中使用不合法的農藥和化學物質。黑心茶葉不僅可能對人體有害,
@@ -16,10 +16,10 @@
         </div>
       </div>
       <div class="row flex-row-reverse d-flex justify-content-center pb-4">
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
+        <div class="col-lg-6 d-flex justify-content-center">
           <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
         </div>
-        <div class="col-12 col-lg-6 d-flex align-items-center">
+        <div class="col-lg-6 d-flex align-items-center">
           <div class="p-4 bg-white shadow-sm" style="border-radius:40px;">
             <h3 class="text-center fs-4 fw-bold">提供給顧客最好的品質</h3>
             <p>我們的品牌初衷是為顧客提供最高品質的產品與服務。我們相信，只有提供最好的產品和服務，才能得到顧客的信任和支持。</p>
@@ -38,7 +38,7 @@
     <div class="col-9">
       <div class="row">
         <h2 class="text-center text-primary mb-7 fw-bold">三大堅持</h2>
-        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+        <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="card h-100 shadow-sm">
                 <div class="d-flex justify-content-center">
                   <span class="material-icons text-primary" style="font-size: 120px;">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+        <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="card h-100 shadow-sm">
                 <div class="d-flex justify-content-center">
                   <span class="material-icons text-primary" style="font-size: 120px;">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+        <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="card h-100 shadow-sm">
                 <div class="d-flex justify-content-center">
                   <span class="material-icons text-primary" style="font-size: 120px;">
@@ -90,26 +90,17 @@
 <section class="container py-5 bg-secondary">
   <div class="row d-flex justify-content-center p-3">
     <h2 class="text-center text-primary mb-7 fw-bold">聯絡我們</h2>
-    <div class="col-md-6 bg-white p-3 bg-secondary shadow-sm">
-      <v-form ref="formabout" v-slot="{ errors }" @submit="send">
-      <div class="mb-3">
-        <label for="mail-address" class="form-label">Email</label>
-        <v-field type="email" name="信箱" class="form-control" id="mail-address" placeholder="name@example.com"  :class="{ 'is-invalid': errors['信箱'] }" rules="email|required"  v-model="user.email"></v-field>
-        <error-message name="信箱" class="invalid-feedback"></error-message>
+    <div class="col-md-9">
+      <div class="row flex-row-reverse">
+        <div class="col-lg-6 d-flex justify-content-center mb-lg-0 mb-md-3 mb-2">
+          <img class="img-fluid object-fit" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="call" style="border-radius:40px;">
+        </div>
+        <div class="col-lg-6 d-flex flex-md-column flex-column justify-content-center shadow-sm p-4 bg-secondary" style="border-radius:40px;">
+          <p>如您有任何疑問歡迎透過下列的方式來聯絡我們，我們很樂意為您服務</p>
+          <p><span class="me-2">聯絡信箱:</span><span>andychen@gmail.com</span></p>
+          <p><span class="me-2">聯絡電話:</span><span>04-2556258</span></p>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="phone-number" class="form-label">聯絡電話</label>
-        <v-field type="tel" name="電話" class="form-control" id="phone-number" placeholder="0987526513"  :class="{ 'is-invalid': errors['電話'] }" :rules="validateTelephone" v-model="user.phone"></v-field>
-        <error-message name="電話" class="invalid-feedback"></error-message>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">留言內容</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="user.msg"></textarea>
-      </div>
-      <div class="d-flex justify-content-center mb-3">
-        <button type="submit" class="btn btn-primary">送出</button>
-      </div>
-    </v-form>
     </div>
   </div>
 

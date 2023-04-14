@@ -58,9 +58,9 @@
 </template>
 
 <script>
-import ArticlesModal from '../../components/ArticlesModal.vue'
-import DelModal from '../../components/DelModal.vue'
-import Pagination from '../../components/PaginationView.vue'
+import ArticlesModal from '@/components/ArticlesModal.vue'
+import DelModal from '@/components/DelModal.vue'
+import Pagination from '@/components/PaginationView.vue'
 import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
@@ -87,6 +87,7 @@ export default {
           showConfirmButton: false,
           timer: 1500
         })
+        loader.hide()
       })
     },
     getArticle (id) {
@@ -106,6 +107,7 @@ export default {
           showConfirmButton: false,
           timer: 1500
         })
+        loader.hide()
       })
     },
     openModal (isNew, item) {

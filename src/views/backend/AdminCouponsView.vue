@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import CouponsModal from '../../components/CouponsModal.vue'
-import DelModal from '../../components/DelModal.vue'
-import Pagination from '../../components/PaginationView.vue'
+import CouponsModal from '@/components/CouponsModal.vue'
+import DelModal from '@/components/DelModal.vue'
+import Pagination from '@/components/PaginationView.vue'
 
 import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env

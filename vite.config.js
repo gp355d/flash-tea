@@ -1,11 +1,13 @@
+/* global process */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslintPlugin from 'vite-plugin-eslint'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
+
 export default defineConfig({
-  base: '/flash-tea/',
+  base: process.env.NODE_ENV === 'production' ? '/flash-tea/' : '/',
   plugins: [
     vue(),
     eslintPlugin({

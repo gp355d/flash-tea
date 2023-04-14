@@ -5,7 +5,7 @@
   <loading v-model:active="isLoading"></loading>
   {{ create_at[0] }}
   <p>{{ article.description }}</p>
-  <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{tag}}</span>
+  <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{ tag }}</span>
   <div class="row d-flex justify-content-center">
     <router-link href="#" to="/products">繼續購物</router-link>
       <div class="col-md-9">
@@ -26,9 +26,10 @@
 </template>
 <script>
 import { mapState } from 'pinia'
-import statusStore from '../../stores/statusStore'
+import StatusStore from '@/stores/statusStore'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -44,18 +45,22 @@ export default {
       this.$http
         .get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/article/${id}`)
         .then((res) => {
-          console.log(res)
           this.article = res.data.article
           this.article.content = res.data.article.content.replace(/\n/g, '<br>')
-          console.log(this.article.content)
-          // console.log(res.data.article.create_at)
           this.create_at = new Date(this.article.create_at * 1000)
             .toISOString()
             .split('T')
           loader.hide()
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          loader.hide()
         })
     }
   },
@@ -63,7 +68,7 @@ export default {
     Loading
   },
   computed: {
-    ...mapState(statusStore, ['isLoading'])
+    ...mapState(StatusStore, ['isLoading'])
   },
   mounted () {
     this.getArticle()

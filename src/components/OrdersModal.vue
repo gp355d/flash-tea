@@ -90,11 +90,12 @@
             </table>
             <div class="d-flex justify-content-end">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="tempOrder.is_paid"/>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="tempOrder.is_paid" @change="checkout(tempOrder)"/>
                 <label class="form-check-label" for="flexCheckDefault">
                   <span v-if="tempOrder.is_paid">已付款</span>
                   <span v-else>未付款</span>
                 </label>
+                <loading v-model:active="isLoading"></loading>
               </div>
             </div>
           </div>
@@ -114,19 +115,31 @@
 </template>
 
 <script>
-import mixin from '../mixins/mixin'
+import mixin from '@/mixins/mixin'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
 export default {
   props: ['order'],
   data () {
     return {
       tempOrder: {},
-      isPaid: false
+      isPaid: false,
+      isLoading: false
     }
   },
   methods: {
     changestatus (tempOrder) {
       this.$emit('change-status', tempOrder)
+    },
+    checkout () {
+      this.isLoading = true
+      setTimeout(() => {
+        this.isLoading = false
+      }, 2000)
     }
+  },
+  components: {
+    Loading
   },
   watch: {
     order () {

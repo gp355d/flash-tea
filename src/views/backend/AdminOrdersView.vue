@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import OrderModal from '../../components/OrdersModal.vue'
-import DelModal from '../../components/DelModal.vue'
-import Pagination from '../../components/PaginationView.vue'
+import OrderModal from '@/components/OrdersModal.vue'
+import DelModal from '@/components/DelModal.vue'
+import Pagination from '@/components/PaginationView.vue'
 import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
@@ -118,6 +118,7 @@ export default {
         })
         const orderComponent = this.$refs.orderModal
         orderComponent.hideModal()
+        this.getOrders()
       }).catch((err) => {
         Swal.fire({
           position: 'top-end',

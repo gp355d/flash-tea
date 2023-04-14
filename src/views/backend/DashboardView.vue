@@ -32,7 +32,7 @@
               <router-link class="nav-link" to="/admin/articles">文章管理</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">回前台首頁</router-link>
+              <router-link class="nav-link" to="/home">回前台首頁</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" @click="logout">登出</a>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_APP_URL } = import.meta.env
 export default {
   data () {
@@ -64,7 +65,13 @@ export default {
       this.$http.post(`${VITE_APP_URL}api/user/check`)
         .then((res) => {
           if (!res.data.success) {
-            alert(res.data.message)
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: res.data.message,
+              showConfirmButton: false,
+              timer: 1500
+            })
             loader.hide()
             this.$router.push('/login')
           } else {
@@ -74,7 +81,14 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          loader.hide()
         })
     }
   },

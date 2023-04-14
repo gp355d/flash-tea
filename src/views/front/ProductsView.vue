@@ -116,18 +116,15 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import productStore from '../../stores/productStore'
-import cartStore from '../../stores/cart'
-import Pagination from '../../components/PaginationView.vue'
+import productStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import Pagination from '@/components/PaginationView.vue'
 import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
-      product: [],
-      // loadingItem: '',
       pagination: {}
-      // category: '
     }
   },
   methods: {
@@ -150,34 +147,9 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+          loader.hide()
         })
     },
-    // filtertest (str, page = 1) {
-    //   // console.log(this.$route.params)
-    //   this.$http.get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/products/?page=${page}&category=${str}`).then((res) => {
-    //     console.log(res)
-    //     this.product = res.data.products
-    //     this.pagination = res.data.pagination
-    //     if (str) {
-    //       this.filtercategory = str
-    //     }
-    //     // loader.hide()
-    //   })
-    //   console.log(this.$route.query)
-    // },
-    // addToCart (id) {
-    //   this.loadingItem = id + '1'
-    //   const data = {
-    //     product_id: id,
-    //     qty: 1
-    //   }
-    //   this.$http.post(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart`, { data }).then((res) => {
-    //     this.loadingItem = ''
-    //     alert('已將商品加入購物車！')
-    //   }).catch((err) => {
-    //     alert(err.response.data.message)
-    //   })
-    // },
     ...mapActions(productStore, ['addtoFollow', 'setCategory', 'getProductAll'])
 
   },
@@ -190,23 +162,10 @@ export default {
     ...mapState(productStore, ['followList', 'productsAll', 'category', 'categories']),
     ...mapState(cartStore, ['loadingItem'])
   },
-  // computed: {
-  //   filtercategories () {
-  //     if (this.filtercategory) {
-  //       return this.product.filter((item) => {
-  //         const data = item.category.toLowerCase().includes(this.category.toLowerCase())
-  //         return data
-  //       })
-  //     }
-  //     return this.product
-  //   }
-  // },
   components: {
     Pagination
   },
   mounted () {
-    // eslint-disable-next-line no-debugger
-    // debugger
     this.getProducts()
     this.getProductAll()
     this.getid()

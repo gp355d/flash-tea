@@ -73,10 +73,11 @@
 
 <script>
 import { mapState, mapActions } from 'pinia'
-import cartStore from '../../stores/cart'
-import status from '../../stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -101,43 +102,22 @@ export default {
   },
   computed: {
     ...mapState(cartStore, ['carts', 'final_total', 'isLoading', 'loadingItem']),
-    ...mapState(status, ['isLoading'])
+    ...mapState(statusStore, ['isLoading'])
   },
   methods: {
-    // deleteItem (item) {
-    //   this.loadingItem = item.id
-    //   const loader = this.$loading.show()
-    //   this.$http.delete(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart/${item.id}`)
-    //     .then((res) => {
-    //       console.log(res)
-    //       this.loadingItem = ''
-    //       loader.hide()
-    //       alert('該商品已經清空')
-    //       this.getCarts()
-    //     }).catch((err) => {
-    //       alert(err.response.data.message)
-    //     })
-    // },
-    // getCarts () {
-    //   const loader = this.$loading.show()
-    //   this.$http.get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`)
-    //     .then(res => {
-    //       console.log(res)
-    //       this.products = res.data.products
-    //       this.cart = res.data.data.carts
-    //       loader.hide()
-    //     })
-    //     .catch((err) => {
-    //       alert(err.response.data.message)
-    //     })
-    // },
     ...mapActions(cartStore, ['getCarts', 'deleteItem', 'updateCartItem', 'clearCart']),
     changeLoading (modalLoading) {
       this.loadingItem = modalLoading
     },
     sendOrder () {
       if (this.cart.carts.length === 0) {
-        alert('購物車清單內為空')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: '購物車清單內為空',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         const data = {
           user: {
@@ -149,13 +129,25 @@ export default {
           message: this.form.msg
         }
         this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/order`, { data })
-          .then(res => {
+          .then(() => {
             this.getCarts()
             this.loadingItem = ''
             this.$refs.form.resetForm()
-            alert('訂單已送出')
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: '訂單已送出',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }).catch((err) => {
-            alert(err.response.data.message)
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: err.response.data.message,
+              showConfirmButton: false,
+              timer: 1500
+            })
           })
       }
     },

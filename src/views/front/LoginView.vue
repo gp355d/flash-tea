@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 const { VITE_APP_URL } = import.meta.env
 export default {
   data () {
@@ -45,7 +46,13 @@ export default {
           this.$router.push('/admin/products')
         })
         .catch((err) => {
-          alert(err.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

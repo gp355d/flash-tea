@@ -11,9 +11,9 @@
 </template>
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cart'
-import NavbarCompoment from '../../components/NavbarCompoment.vue'
-import footerCompoment from '../../components/FooterCompoment.vue'
+import cartStore from '@/stores/cartStore'
+import NavbarCompoment from '@/components/NavbarCompoment.vue'
+import footerCompoment from '@/components/FooterCompoment.vue'
 export default {
   components: {
     NavbarCompoment,
