@@ -1,11 +1,11 @@
 <template>
-    <div class="gg container-fluid">
-          <div class="wrapper">
-            <NavbarCompoment :num="cartNUm"></NavbarCompoment>
-            <router-view></router-view>
-            <footerCompoment></footerCompoment>
-          </div>
+  <div class="wrapper">
+    <div class="min-vh-100">
+    <NavbarCompoment :num="cartNUm"></NavbarCompoment>
+    <router-view></router-view>
     </div>
+  </div>
+    <footerCompoment></footerCompoment>
 
   <!-- </div> -->
 </template>
