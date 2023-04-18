@@ -1,10 +1,10 @@
 <template>
   <section class="container py-8">
-    <div class="row d-flex justify-content-center mb-4">
+    <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center mb-4">
       <div class="col-md-9">
-        <div class="row mb-4">
+        <div class="row g-0 g-md-3 g-lg-4 mb-4">
           <h2 class="text-center text-primary fw-bold mb-7">鮮品味茶品</h2>
-          <div class="col-md-7">
+          <div class="col-md-7 d-flex align-items-center">
             <swiper
                   :style="{
                     '--swiper-navigation-color': '#fff',
@@ -23,22 +23,7 @@
                     <img :src="image" />
                   </swiper-slide>
             </swiper>
-              <swiper
-                  @swiper="setThumbsSwiper"
-                  :spaceBetween="10"
-                  :slidesPerView="4"
-                  :freeMode="true"
-                  :watchSlidesProgress="true"
-                  :modules="modules"
-                  class="mySwiper align-items-center"
-                >
-                  <swiper-slide
-                    v-for="(image, i) in product.imagesUrl"
-                    :key="i"
-                  >
-                    <img :src="image" />
-                  </swiper-slide>
-              </swiper>
+
               <!-- {{ product }} -->
           </div>
           <div class="col-md-5">
@@ -69,11 +54,11 @@
                     <div class="text-decoration-line-through fs-4">
                       <span>原價</span>
                       <!-- {{typeof $filters.currency(product.origin_price) }} -->
-                      <span>{{ (product.origin_price) }}</span>
+                      <span>{{ $filters.currency(product.origin_price) }}</span>
                     </div>
                     <div class="fs-2 mb-2 fw-bold text-danger">
                       <span class="">特價</span>
-                      <span>{{ (product.price) }}</span>
+                      <span>{{ $filters.currency(product.price) }}</span>
                     </div>
                   </div>
                   <div class="d-flex justify-content-end">
@@ -96,9 +81,29 @@
             </div>
           </div>
         </div>
+        <div class="row g-0 g-md-3 g-lg-4">
+          <div class="col-12 h-50">
+            <swiper
+              @swiper="setThumbsSwiper"
+              :spaceBetween="10"
+              :slidesPerView="4"
+              :freeMode="true"
+              :watchSlidesProgress="true"
+              :modules="modules"
+              class="mySwiper align-items-center"
+            >
+              <swiper-slide
+                v-for="(image, i) in product.imagesUrl"
+                :key="i"
+              >
+                <img class="object-fit" :src="image" />
+              </swiper-slide>
+            </swiper>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row d-flex justify-content-center mb-4">
+    <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center mb-4">
       <div class="col-md-9">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -115,7 +120,7 @@
               商品介紹
             </button>
           </li>
-          <!-- <li class="nav-item" role="presentation">
+          <li class="nav-item" role="presentation">
             <button
               class="nav-link"
               id="profile-tab"
@@ -129,20 +134,6 @@
               商品規格
             </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="contact-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#contact"
-              type="button"
-              role="tab"
-              aria-controls="contact"
-              aria-selected="false"
-            >
-              商品特色
-            </button>
-          </li> -->
         </ul>
         <div class="tab-content" id="myTabContent">
           <div
@@ -158,20 +149,35 @@
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            ...
-          </div>
-          <div
-          class="tab-pane fade"
-          id="contact"
-          role="tabpanel"
-          aria-labelledby="contact-tab"
-          >
-            ...
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th class="bg-secondary" width="150">茶品名稱:</th>
+                <td>{{product.title}}</td>
+              </tr>
+              <tr>
+                <th class="bg-secondary" width="150">產地:</th>
+                <td>{{product?.specification?.product?.country}}</td>
+              </tr>
+              <tr>
+                <th class="bg-secondary" width="150">淨重:</th>
+                <td>{{ product?.specification?.weight }}{{ product?.specification?.unit }}</td>
+              </tr>
+              <tr>
+                <th class="bg-secondary" width="150">保存期限:</th>
+                <td>{{ product?.specification?.product?.year }}{{ product?.specification?.product?.unit }}</td>
+              </tr>
+              <tr>
+                <th class="bg-secondary" width="150">包裝類型:</th>
+                <td>{{product.category}}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
         </div>
       </div>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
       <h2 class="text-center text-primary mb-7 fw-bold">相關商品</h2>
       <div class="col-md-9">
         <swiper class="Swiper3"
@@ -197,20 +203,22 @@
     }"
     :modules="modules">
     <swiper-slide v-for="item in related" :key="item.id">
-              <div class="card d-flex h-100 shadow-sm">
-                <div class="bg-cover"
-                  style="min-height: 200px;cursor: pointer;background-position: center;"
-                    @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
-                    <!-- <img class="object-fit mb-3 mb-lg-2 w-100" :src="item.imageUrl" alt="" height="300"> -->
-                </div>
-                <div class="card-body p-0">
-                  <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
-                  <div class="fs-5 lh-30 fw-bold mb-5">
-                    <!-- <span class="card-text">NT$</span> -->
-                    <span>{{ $filters.currency(item.price) }}</span>
-                  </div>
-                </div>
-              </div>
+      <div class="card d-flex h-100 shadow-sm">
+        <router-link class="text-decoration-none" :to="`/product/${item.id}`">
+          <div class="bg-cover"
+            style="min-height: 200px;cursor: pointer;background-position: center;"
+              @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
+              <!-- <img class="object-fit mb-3 mb-lg-2 w-100" :src="item.imageUrl" alt="" height="300"> -->
+          </div>
+          <div class="card-body p-0">
+            <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
+            <div class="fs-5 lh-30 fw-bold mb-5">
+              <!-- <span class="card-text">NT$</span> -->
+              <span>{{ $filters.currency(item.price) }}</span>
+            </div>
+          </div>
+        </router-link>
+      </div>
     </swiper-slide>
         </swiper>
       </div>
@@ -356,7 +364,7 @@ body {
 //   padding: 10px 0;
 // }
 .mySwiper {
-  height: 20%;
+  height: 140px;
   box-sizing: border-box;
   padding: 10px 0;
 }
@@ -385,5 +393,9 @@ body {
   position: absolute; /* pagination元件設定為絕對定位 */
   left: 20px; /* 調整左右位置 */
   bottom: 20px; /* 調整上下位置 */
+}
+.card:hover {
+  transform: scale(1.1);
+  // opacity: 0.3;
 }
 </style>

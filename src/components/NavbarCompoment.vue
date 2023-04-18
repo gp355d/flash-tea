@@ -26,10 +26,13 @@
                 <router-link to="/favorite" class="link d-block fs-6">茶品收藏</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/cart" class="position-relative end-0">
+                <router-link  v-if="num > 0" to="/cart" class="position-relative end-0">
                   <span class="material-icons fs-4"> shopping_cart </span>
                   <span
                     class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{num}}</span>
+                </router-link>
+                <router-link  v-else to="/cart" class="position-relative end-0">
+                  <span class="material-icons fs-4"> shopping_cart </span>
                 </router-link>
               </li>
             </ul>
@@ -61,7 +64,7 @@
               <router-link to="/QA" class="link d-block fs-6 mb-7" href="#">常見問題</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="link d-block fs-6 mb-7" href="#">茶品收藏</router-link>
+              <router-link to="/favorite" class="link d-block fs-6 mb-7" href="#">茶品收藏</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/cart" class="link d-block fs-6" href="#">購物車</router-link>

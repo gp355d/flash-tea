@@ -2,11 +2,11 @@
 <div class="container py-8">
   <loading v-model:active="isLoading"></loading>
   <router-link to="/products">繼續購物</router-link>
-  <div class="row align-items-center flex-column flex-md-row d-flex justify-content-center">
+  <div class="row g-0 g-md-3 g-lg-4 align-items-center flex-column flex-md-row d-flex justify-content-center">
     <h2 class="text-center text-primary mb-7 fw-bold">你的收藏茶品</h2>
     <template v-if="followList.list.length > 0">
       <div class="col-md-9">
-        <div class="row me-3">
+        <div class="row g-0 g-md-3 g-lg-4 me-3">
           <div class="d-flex align-items-center shadow-sm mb-2 mb-md-3 p-2 text-center" v-for="list in followList.list" :key="list.id">
             <span class="col-1"><a href="#"><span class="material-icons fs-2" @click.prevent="() => addtoFollow(list.id)">delete</span></a></span>
             <img class="col-4 img-fluid object-fit px-2" :src="list.imageUrl" :key="list.id" alt="img-fluid" height="130">

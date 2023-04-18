@@ -1,9 +1,9 @@
 <template>
   <section class="container py-8">
   <h2 class="text-center text-primary mb-7 fw-bold">關於我們</h2>
-  <div class="row justify-content-center">
+  <div class="row g-0 g-md-3 g-lg-4 justify-content-center">
     <div class="col-md-9">
-      <div class="row mb-4 pb-4">
+      <div class="row g-0 g-md-3 g-lg-4 mb-4 pb-4">
         <div class="col-lg-6 d-flex justify-content-center">
           <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
         </div>
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="row flex-row-reverse d-flex justify-content-center pb-4">
+      <div class="row g-0 g-md-3 g-lg-4 flex-row-reverse d-flex justify-content-center pb-4">
         <div class="col-lg-6 d-flex justify-content-center">
           <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
         </div>
@@ -34,9 +34,9 @@
   <router-link href="#" class="btn btn-primary" to="/products">了解更多</router-link>
 </section>
 <section class="container py-5">
-  <div class="row d-flex justify-content-center">
+  <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
     <div class="col-9">
-      <div class="row">
+      <div class="row g-0 g-md-3 g-lg-4">
         <h2 class="text-center text-primary mb-7 fw-bold">三大堅持</h2>
         <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="card h-100 shadow-sm">
@@ -88,10 +88,10 @@
   </div>
 </section>
 <section class="container py-5 bg-secondary">
-  <div class="row d-flex justify-content-center p-3">
+  <div class="row  g-0 g-md-3 g-lg-4 d-flex justify-content-center p-3">
     <h2 class="text-center text-primary mb-7 fw-bold">聯絡我們</h2>
     <div class="col-md-9">
-      <div class="row flex-row-reverse">
+      <div class="row g-0 g-md-3 g-lg-4 flex-row-reverse">
         <div class="col-lg-6 d-flex justify-content-center mb-lg-0 mb-md-3 mb-2">
           <img class="img-fluid object-fit" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="call" style="border-radius:40px;">
         </div>

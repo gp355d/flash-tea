@@ -1,12 +1,12 @@
 <template>
   <div class="container py-8">
-    <div class="row justify-content-center align-items-center flex-column">
+    <div class="row g-0 g-md-3 g-lg-4 justify-content-center align-items-center flex-column">
       <h2 class="text-center text-primary mb-7 fw-bold">常見問題</h2>
       <div class="col-md-6 mb-5 justify-content-center d-flex flex-column">
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#QA1" aria-expanded="true" aria-controls="collapseOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#QA1" aria-expanded="true" aria-controls="collapseOne">
           Q:茶葉的保存期限是多久?
         </button>
       </h2>
@@ -19,7 +19,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#QA2" aria-expanded="true" aria-controls="collapseOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#QA2" aria-expanded="true" aria-controls="collapseOne">
           Q:茶葉是否經過有機認證?
         </button>
       </h2>
@@ -31,7 +31,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#QA3" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#QA3" aria-expanded="false" aria-controls="collapseTwo">
           Q:茶葉是否含有防腐劑或人工色素?
         </button>
       </h2>
@@ -43,7 +43,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#QA4" aria-expanded="false" aria-controls="collapseThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#QA4" aria-expanded="false" aria-controls="collapseThree">
           Q:茶葉是否可以重複泡？
         </button>
       </h2>

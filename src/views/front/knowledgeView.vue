@@ -1,6 +1,6 @@
 <template>
 <div class="container py-8">
-  <div class="row d-flex justify-content-center py-5">
+  <div class="row g-0 d-flex justify-content-center py-5">
     <div class="col-md-9 p-3">
       <h2 class="text-center text-primary mb-7 fw-bold">茶葉知識文章</h2>
       <div class="row mb-5 p-3">

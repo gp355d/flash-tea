@@ -64,28 +64,41 @@ const cartStore = defineStore('cart', {
         })
     },
     clearCart () {
-      this.loadingItem = 'deleteAll'
-      axios.delete(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/carts`)
-        .then(() => {
-          this.getCarts()
-          this.loadingItem = ''
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '購物車已清空',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }).catch((err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: err.response.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.loadingItem = ''
-        })
+      Swal.fire({
+        title: '確認是否要清空購物車?',
+        text: '此動作將無法復原',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#46633D',
+        cancelButtonColor: '#d33',
+        cancelButtonText: '取消!',
+        confirmButtonText: '確認刪除'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.loadingItem = 'deleteAll'
+          axios.delete(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/carts`)
+            .then(() => {
+              this.getCarts()
+              this.loadingItem = ''
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '購物車已清空',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }).catch((err) => {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: err.response.data.message,
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.loadingItem = ''
+            })
+        }
+      })
     },
     updateCartItem (item) { // 購物車的id,產品的id
       const data = {

@@ -42,6 +42,11 @@ const routes = [
         meta: { title: '訂購完成' }
       },
       {
+        path: 'pay',
+        component: () => import('../views/front/PayCompleteView.vue'),
+        meta: { title: '付款完成' }
+      },
+      {
         path: 'qa',
         component: () => import('../views/front/QAView.vue'),
         meta: { title: 'Q&A' }
