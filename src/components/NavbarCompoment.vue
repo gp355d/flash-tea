@@ -42,7 +42,7 @@
       <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header p-0 mb-12">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-          <router-link to="/home"  href="#">
+          <router-link @click="hideOffcanvas" to="/home"  href="#">
             <img src="../assets/images/logo.svg" alt="logo">
           </router-link>
         </h5>
