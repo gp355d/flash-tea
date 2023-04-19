@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" ref="modal">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
@@ -13,7 +13,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-              <v-form v-slot="{ errors }">
+              <v-form v-slot="{ errors }" @submit="() => $emit('update-article', tempArticle)">
                 <div class="mb-3">
                   <label for="title" class="form-label">標題</label>
                   <v-field type="text" name="標題" class="form-control" id="title" v-model="tempArticle.title" placeholder="請輸入標題"
@@ -43,7 +43,7 @@
               <div class="row gx-1 mb-3">
                 <div class="col-md-2 mb-1" v-for="(label, key) in tempArticle.tag" :key="key">
                   <div class="input-group input-group-sm">
-                    <v-field type="text" class="form-control form-control" id="tag" v-model="tempArticle.tag[key]"
+                    <v-field type="text" name="標籤" class="form-control form-control" id="tag" v-model="tempArticle.tag[key]"
                       placeholder="請輸入標籤"></v-field>
                     <button type="button" class="btn btn-outline-danger" @click="() => tempArticle.tag.splice(key, 1)">
                       <i class="bi bi-x"></i>
@@ -83,7 +83,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="() => $emit('update-article', tempArticle)">
+          <button type="submit" class="btn btn-primary">
             確認
           </button>
         </div>

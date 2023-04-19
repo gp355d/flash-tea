@@ -39,7 +39,7 @@
           </div>
         </div>
       </nav>
-      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header p-0 mb-12">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
           <a  href="#">
@@ -52,22 +52,22 @@
         <div>
           <ul class="menu d-flex flex-column list-unstyled mb-0 offcanvas-nav text-center">
             <li class="nav-item">
-              <router-link to="/products" class="link d-block fs-6 mb-7" href="#">茶品介紹</router-link>
+              <router-link to="/products" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品介紹</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/knowledge" class="link d-block fs-6 mb-7" href="#">茶葉知識</router-link>
+              <router-link to="/knowledge" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶葉知識</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/about" class="link d-block fs-6 mb-7" href="#">關於我們</router-link>
+              <router-link to="/about" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">關於我們</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/QA" class="link d-block fs-6 mb-7" href="#">常見問題</router-link>
+              <router-link to="/QA" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">常見問題</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/favorite" class="link d-block fs-6 mb-7" href="#">茶品收藏</router-link>
+              <router-link to="/favorite" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品收藏</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/cart" class="link d-block fs-6" href="#">購物車</router-link>
+              <router-link to="/cart" class="link d-block fs-6" href="#" @click="hideOffcanvas">購物車</router-link>
             </li>
           </ul>
         </div>
@@ -75,12 +75,22 @@
         </div>
 </template>
 <script>
+import Offcanvas from 'bootstrap/js/dist/offcanvas'
 export default {
   props: ['num'],
   data () {
     return {
       // cartNUm: 0
     }
+  },
+  methods: {
+    hideOffcanvas () {
+      this.off.hide()
+    }
+  },
+  mounted () {
+    this.off = new Offcanvas(this.$refs.offcanvs)
   }
+
 }
 </script>

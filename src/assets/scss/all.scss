@@ -65,12 +65,15 @@
 }
 
 .sidebar .nav-link.active {
-  color: #2470dc;
+  color: #fff;
+  background-color: $primary;
 }
-
+.sidebar .nav-link:hover {
+  color: #fff;
+}
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
-  color: inherit;
+  color: #fff;
 }
 
 .sidebar-heading {

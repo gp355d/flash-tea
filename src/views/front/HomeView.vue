@@ -51,6 +51,9 @@
   <section class="mb-10">
   <div class="test py-7 container-fluid" style="z-index: 2;">
     <h2 class="text-center text-primary lh-38 fw-bold mb-7 noto-serif-font">熱銷推薦</h2>
+    <p class="text-center">
+      <strong class="h4">結帳時輸入"flash-tea"即享有茶品85折優惠</strong>
+    </p>
     <div class="container">
       <div class="row pb-md-7 pb-0">
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
@@ -217,24 +220,18 @@ export default {
 
 <style scoped>
 .indexAboutImg{
-border-radius: 40px;
-background-image: url('../../assets/images/intro1.jpg');
-background-position: center;
+  border-radius: 40px;
+  background-image: url('../../assets/images/intro1.jpg');
+  background-position: center;
 }
 
 .swiper-slide{
-/* width: 33.33% !important; */
-height: auto;
+  height: auto;
 }
-/* .card-img-wrapper {
-  position: relative;
-  overflow: hidden;
-} */
 .recomender.card:hover img {
-/*   transform: scale(1.1); */
   opacity: 0.3;
 }
 img .card:hover {
-opacity: 0.3;
+  opacity: 0.3;
 }
 </style>

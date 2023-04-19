@@ -71,7 +71,7 @@ const cartStore = defineStore('cart', {
         showCancelButton: true,
         confirmButtonColor: '#46633D',
         cancelButtonColor: '#d33',
-        cancelButtonText: '取消!',
+        cancelButtonText: '取消',
         confirmButtonText: '確認刪除'
       }).then((result) => {
         if (result.isConfirmed) {

@@ -1,6 +1,6 @@
 <template>
   <section class="container py-8">
-  <h2 class="text-center text-primary mb-7 fw-bold">關於我們</h2>
+  <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">關於我們</h2>
   <div class="row g-0 g-md-3 g-lg-4 justify-content-center">
     <div class="col-md-9">
       <div class="row g-0 g-md-3 g-lg-4 mb-4 pb-4">
@@ -37,7 +37,7 @@
   <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
     <div class="col-9">
       <div class="row g-0 g-md-3 g-lg-4">
-        <h2 class="text-center text-primary mb-7 fw-bold">三大堅持</h2>
+        <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">三大堅持</h2>
         <div class="col-lg-4 mb-3 mb-lg-0">
             <div class="card h-100 shadow-sm">
                 <div class="d-flex justify-content-center">
@@ -89,7 +89,7 @@
 </section>
 <section class="container py-5 bg-secondary">
   <div class="row  g-0 g-md-3 g-lg-4 d-flex justify-content-center p-3">
-    <h2 class="text-center text-primary mb-7 fw-bold">聯絡我們</h2>
+    <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">聯絡我們</h2>
     <div class="col-md-9">
       <div class="row g-0 g-md-3 g-lg-4 flex-row-reverse">
         <div class="col-lg-6 d-flex justify-content-center mb-lg-0 mb-md-3 mb-2">

@@ -6,8 +6,6 @@
     </div>
   </div>
     <footerCompoment></footerCompoment>
-
-  <!-- </div> -->
 </template>
 <script>
 import { mapActions, mapState } from 'pinia'

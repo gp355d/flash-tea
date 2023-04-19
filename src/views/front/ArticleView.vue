@@ -6,10 +6,14 @@
   {{ create_at[0] }}
   <p>{{ article.description }}</p>
   <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{ tag }}</span>
-  <div class="row d-flex justify-content-center">
-    <router-link href="#" to="/products">繼續購物</router-link>
+  <div>
+    <router-link class="d-inline-flex align-items-center text-decoration-none" to="/products">
+      <span class="material-icons">keyboard_return</span>繼續購物
+    </router-link>
+  </div>
+  <div class="row g-0 d-flex justify-content-center">
       <div class="col-md-9">
-        <div class="row">
+        <div class="row g-0">
           <div class="col-12 d-flex justify-content-center mb-5">
             <img class="img-fluid object-fit" :src="article.imgurl" alt="">
           </div>

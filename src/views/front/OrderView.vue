@@ -1,7 +1,7 @@
 <template>
   <div class="container py-8">
     <loading v-model:active="isLoading"></loading>
-    <h2 class="text-center fw-bold text-primary mb-7">填寫訂單</h2>
+    <h2 class="text-center fw-bold text-primary mb-7 noto-serif-font">填寫訂單</h2>
     <div class="pt-4 pb-3">
       <div class="container">
         <div class="row justify-content-center">
@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row g-0 g-md-3 justify-content-center flex-column flex-md-row"> -->
-      <!-- <div class="col-md-9 mb-3 d-flex flex-column justify-content-between"> -->
-      <router-link to="/cart" class="d-inline-flex align-items-center text-decoration-none" style="width:130px">
+    <div class="row g-0 g-md-3 justify-content-center flex-column flex-md-row">
+      <div class="col-md-9 mb-3 d-flex flex-column justify-content-between">
+      <router-link to="/cart" class="d-inline-flex align-items-center text-decoration-none">
         <span class="material-icons">keyboard_return</span>
         回購物車列表
       </router-link>
@@ -45,7 +45,7 @@
                   <span class="fs-6 fs-md-4 mb-0">{{item.product?.title}}</span>
                 </div>
                 <div class="col-3 text-end">
-                  <span class="fs-6 fs-md-4 noto-serif-font">{{$filters.currency(item.product?.price)}}</span>
+                  <span class="fs-6 fs-md-4">{{$filters.currency(item.product?.price)}}</span>
                 </div>
                 <div class="col-2 text-end">
                   <span class="col-2 fs-6 fs-md-4">X{{item.qty}}</span>
@@ -58,10 +58,10 @@
               <div class="d-flex justify-content-between fs-5">
                 <span>總和</span>
                 <template v-if="discoutStatus">
-                  <span class="fw-bold noto-serif-font text-danger">{{$filters.currency(final_total)}}</span>
+                  <span class="fw-bold text-danger">{{$filters.currency(final_total)}}</span>
                 </template>
                 <template v-else>
-                  <span class="fw-bold noto-serif-font text-danger">{{$filters.currency(total)}}</span>
+                  <span class="fw-bold text-danger">{{$filters.currency(total)}}</span>
                 </template>
               </div>
             </div>
@@ -99,9 +99,10 @@
                 <label for="customer-pay" class="form-label">付款方式</label>
                 <v-field id="customer-pay" name="付款方式" class="form-control" :class="{ 'is-invalid': errors['付款方式'] }" rules="required" v-model="form.region" as="select">
                   <option value="" disabled>請選擇</option>
-                  <option value="1">ATM</option>
-                  <option value="2">Cradit Card</option>
-                  <option value="3">samsung pay</option>
+                  <option value="1">ATM轉帳</option>
+                  <option value="2">信用卡</option>
+                  <option value="3">銀行轉帳</option>
+                  <option value="4">超商繳費</option>
                 </v-field>
                 <error-message name="付款方式" class="invalid-feedback"></error-message>
               </div>
@@ -116,8 +117,8 @@
           </v-form>
         </div>
       </div>
-    <!-- </div> -->
-  <!-- </div> -->
+    </div>
+  </div>
 </div>
 </template>
 
@@ -168,8 +169,6 @@ export default {
         .then((res) => {
           console.log(res)
           this.discoutStatus = res.data.success
-          // this.final_total = res.data.final_total
-          // alert(res.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -179,7 +178,6 @@ export default {
           })
         })
         .catch((err) => {
-          // alert(err.response.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -212,7 +210,6 @@ export default {
             this.getCarts()
             this.loadingItem = ''
             this.$refs.form.resetForm()
-            // alert('訂單已送出')
             Swal.fire({
               position: 'top-end',
               icon: 'success',

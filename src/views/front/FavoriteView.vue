@@ -1,9 +1,8 @@
 <template>
 <div class="container py-8">
   <loading v-model:active="isLoading"></loading>
-  <router-link to="/products">繼續購物</router-link>
   <div class="row g-0 g-md-3 g-lg-4 align-items-center flex-column flex-md-row d-flex justify-content-center">
-    <h2 class="text-center text-primary mb-7 fw-bold">你的收藏茶品</h2>
+    <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">你的收藏茶品</h2>
     <template v-if="followList.list.length > 0">
       <div class="col-md-9">
         <div class="row g-0 g-md-3 g-lg-4 me-3">
@@ -22,7 +21,8 @@
       </div>
     </template>
     <template v-else>
-      <p class="text-center h4">目前收藏為空，再去收藏吧</p>
+      <p class="text-center h4 mb-3">目前收藏為空，再去收藏吧</p>
+      <router-link class="w-25 btn btn-primary mt-0" to="/products">去收藏</router-link>
     </template>
   </div>
 </div>

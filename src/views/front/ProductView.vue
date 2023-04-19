@@ -3,7 +3,7 @@
     <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center mb-4">
       <div class="col-md-9">
         <div class="row g-0 g-md-3 g-lg-4 mb-4">
-          <h2 class="text-center text-primary fw-bold mb-7">鮮品味茶品</h2>
+          <h2 class="text-center text-primary fw-bold mb-7 noto-serif-font">鮮品味茶品</h2>
           <div class="col-md-7 d-flex align-items-center">
             <swiper
                   :style="{
@@ -11,7 +11,6 @@
                     '--swiper-pagination-color': '#fff',
                   }"
                   :spaceBetween="10"
-                  :navigation="true"
                   :thumbs="{ swiper: thumbsSwiper }"
                   :modules="modules"
                   class="mySwiper2"
@@ -20,11 +19,10 @@
                     v-for="(image, i) in product.imagesUrl"
                     :key="i"
                   >
-                    <img :src="image" />
+                    <img class="iobject-fit" :src="image" />
                   </swiper-slide>
             </swiper>
 
-              <!-- {{ product }} -->
           </div>
           <div class="col-md-5">
             <div class="d-flex flex-column justify-content-center h-100">
@@ -53,7 +51,6 @@
                   <div class="align-self-end">
                     <div class="text-decoration-line-through fs-4">
                       <span>原價</span>
-                      <!-- {{typeof $filters.currency(product.origin_price) }} -->
                       <span>{{ $filters.currency(product.origin_price) }}</span>
                     </div>
                     <div class="fs-2 mb-2 fw-bold text-danger">
@@ -135,7 +132,7 @@
             </button>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content p-2" id="myTabContent">
           <div
             class="tab-pane fade show active p-5"
             id="home"
@@ -178,49 +175,49 @@
       </div>
     </div>
     <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
-      <h2 class="text-center text-primary mb-7 fw-bold">相關商品</h2>
+      <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">相關商品</h2>
       <div class="col-md-9">
-        <swiper class="Swiper3"
-      :navigation="true"
-    :slidesPerView="3"
-    :spaceBetween="24"
-    :pagination="{
-      clickable: true,
-    }"
-    :breakpoints="{
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 24,
-      },
-      768: {
-      slidesPerView: 3,
-      spaceBetween: 24
-    },
-      992: {
+        <div class="swiper-container">
+          <swiper
+      :slidesPerView="3"
+      :spaceBetween="24"
+      :pagination="{
+        clickable: true,
+      }"
+      :breakpoints="{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 24,
+        },
+        768: {
         slidesPerView: 3,
-        spaceBetween: 24,
-      }
-    }"
-    :modules="modules">
-    <swiper-slide v-for="item in related" :key="item.id">
-      <div class="card d-flex h-100 shadow-sm">
-        <router-link class="text-decoration-none" :to="`/product/${item.id}`">
-          <div class="bg-cover"
-            style="min-height: 200px;cursor: pointer;background-position: center;"
-              @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
-              <!-- <img class="object-fit mb-3 mb-lg-2 w-100" :src="item.imageUrl" alt="" height="300"> -->
-          </div>
-          <div class="card-body p-0">
-            <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
-            <div class="fs-5 lh-30 fw-bold mb-5">
-              <!-- <span class="card-text">NT$</span> -->
-              <span>{{ $filters.currency(item.price) }}</span>
+        spaceBetween: 24
+      },
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        }
+      }"
+      :modules="modules"
+      >
+      <swiper-slide v-for="item in related" :key="item.id">
+        <div class="card d-flex h-100 shadow-sm">
+          <router-link class="text-decoration-none" :to="`/product/${item.id}`">
+            <div class="bg-cover"
+              style="min-height: 200px;cursor: pointer;background-position: center;"
+                @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
             </div>
-          </div>
-        </router-link>
-      </div>
-    </swiper-slide>
-        </swiper>
+            <div class="card-body p-0">
+              <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
+              <div class="fs-5 lh-30 fw-bold mb-5">
+                <span>{{ $filters.currency(item.price) }}</span>
+              </div>
+            </div>
+          </router-link>
+        </div>
+      </swiper-slide>
+    </swiper>
+        </div>
       </div>
     </div>
   </section>
@@ -328,12 +325,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// #app {
-//   height: 100%;
-// }
 html,
 body {
-  // position: relative;
   height: 100%;
 }
 
@@ -355,14 +348,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-/* 商品小圖切換外框 */
-// .mySwiper {
-//   width: 100%;
-//   height: 150px;
-//   box-sizing: border-box;
-//   padding: 10px 0;
-// }
 .mySwiper {
   height: 140px;
   box-sizing: border-box;
@@ -384,18 +369,7 @@ body {
 .mySwiper .swiper-slide-thumb-active {
   opacity: 1;
 }
-// .Swiper3 .swiper-slide{
-//   width: 33.33% !important;
-//   height: auto;
-// }
-
-.Swiper3 .swiper-pagination {
-  position: absolute; /* pagination元件設定為絕對定位 */
-  left: 20px; /* 調整左右位置 */
-  bottom: 20px; /* 調整上下位置 */
-}
 .card:hover {
   transform: scale(1.1);
-  // opacity: 0.3;
 }
 </style>

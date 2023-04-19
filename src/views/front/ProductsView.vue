@@ -1,33 +1,24 @@
 <template>
   <div class="container py-8">
   <div class="row g-0 g-md-3 g-lg-4 justify-content-center mb-0">
-    <h2 class="text-center text-primary mb-7 fw-bold">茶品介紹</h2>
+    <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">茶品介紹</h2>
     <div class="col-lg-3 mb-4 mb-md-0">
-      <!-- {{ followList.id }}
-      {{ filtercategory}} -->
-      <!-- setCategory -->
       <ul class="list-group" >
-        <!-- <a href="#" class="btn btn-primary" @click.prevent="() => setCategory('')" :class="{ active: category === '' }">get</a> -->
         <li class="list-unstyled">
           <a
           href="#"
-              class="list-group-item list-group-item-action noto-serif-font"
+              class="list-group-item list-group-item-action"
               :class="{ active: category === '' }"
               @click.prevent="setCategory('')"
             >
               全部商品
             </a>
         </li>
-        <!-- <button type="button" class="btn btn-primary" @click.prevent="() => getCategory()">getC</button> -->
-        <!-- <a href="#" @click.prevent="filtertest(filtercategory[i])">{{filtercategory[i]}}</a> v-for="(item,i) in filtercategory" :key="item.id"-->
-        <!-- <li class="list-group-item active" aria-current="true">
-          茶包
-        </li> -->
         <li class="list-unstyled">
           <template v-for="(item, index) in categories" :key="`${index}-${item}`">
             <a
             href="#"
-              class="list-group-item list-group-item-action noto-serif-font"
+              class="list-group-item list-group-item-action"
               :class="{ active: category === item }"
               @click.prevent="setCategory(item)"
             >
@@ -41,21 +32,15 @@
     <div class="col-lg-9 mb-4 mb-md-0">
       <div class="row g-0 g-md-3 g-lg-4 mb-3">
         <div class="col-md-6 col-lg-4 mb-4 mb-md-3" v-for="product in product" :key="product.id">
-          <!-- {{ product.id }} -->
           <div class="card border-0 shadow-sm rounded-3">
             <div class="">
-              <!-- <a to ="/Favorite" href="#"  class="btn" @click.prevent="() => addtoFollow(product.id)"> -->
-              <!-- </a> -->
-              <!-- {{ followList.id.indexOf(product.id)}} -->
               <router-link :to="`/product/${product.id}`" >
                 <img :src="product.imageUrl" height="250" class="card-img-top object-fit mb-0" alt="product-img">
               </router-link>
               <div class="card-body fw-bold text-primary p-5">
                 <span class="badge rounded-pill bg-primary">{{ product.category }}</span>
-                <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">{{ product.title }}</h5>
-                <!-- <span class="d-inline-block text-truncate" style="max-height: 50px;max-width: 200px;">{{ product.description }}</span> -->
+                <h5 class="card-title fs-4 lh-29 fw-bold">{{ product.title }}</h5>
                 <div class="fs-5 lh-30 fw-bold mb-5 position-relative">
-                  <!-- <span class="card-text">NT</span> -->
                   <a href="#"  @click.prevent="() => addtoFollow(product.id)" >
                     <span class="position-absolute end-0 material-icons fs-1" style="cursor: pointer;" v-if="followList.id.indexOf(product.id) === -1">
                     <!-- 未加入 true -->
@@ -82,35 +67,6 @@
     </div>
   </div>
 </div>
-
-<!-- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">名稱</th>
-      <th scope="col">圖片</th>
-      <th scope="col">連結</th>
-      <th scope="col">功能</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="product in product" :key="product.id">
-      <th scope="row">1</th>
-      <td>{{ product.title }}</td>
-      <td><img :src="`${product.imageUrl}`" alt="" width="200"></td>
-      <td>
-        <router-link :to="`/product/${product.id}`" class="btn btn-outline-secondary">連結</router-link>
-      </td>
-      <td>
-        <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id)" :disabled="loadingItem === product.id+'1'">
-          加入購物車
-          <i class="fas fa-spinner fa-pulse" v-if="loadingItem === product.id+'1'"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
-<!-- {{ pagination }} -->
 <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
 </template>
 
@@ -124,7 +80,8 @@ const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
-      pagination: {}
+      pagination: {},
+      product: []
     }
   },
   methods: {

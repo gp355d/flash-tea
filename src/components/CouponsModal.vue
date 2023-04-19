@@ -12,7 +12,7 @@
                   data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <v-form v-slot="{ errors }">
+          <v-form ref="form" v-slot="{ errors }" @submit="() => changestatus(tempCoupon)">
           <div class="mb-3">
             <label for="title">標題</label>
             <v-field type="text" name="標題" class="form-control" id="title" v-model="tempCoupon.title" placeholder="請輸入標題"
@@ -52,8 +52,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"
-                  @click="() =>changestatus(tempCoupon)"> {{ isNew ? '新增優惠卷' : '更新優惠券' }}
+          <button type="submit" class="btn btn-primary"
+                  > {{ isNew ? '新增優惠卷' : '更新優惠券' }}
           </button>
         </div>
       </div>
