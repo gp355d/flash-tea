@@ -13,7 +13,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-              <v-form v-slot="{ errors }" @submit="() => $emit('update-article', tempArticle)">
+              <v-form v-slot="{ errors }">
                 <div class="mb-3">
                   <label for="title" class="form-label">標題</label>
                   <v-field type="text" name="標題" class="form-control" id="title" v-model="tempArticle.title" placeholder="請輸入標題"
@@ -83,7 +83,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="submit" class="btn btn-primary">
+          <button type="button" class="btn btn-primary"  @click="() => $emit('update-article', tempArticle)">
             確認
           </button>
         </div>

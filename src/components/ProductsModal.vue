@@ -48,7 +48,7 @@
               </div>
             </div>
             <div class="col-sm-8">
-              <v-form v-slot="{ errors }" @submit="() =>$emit('update-data')">
+              <v-form v-slot="{ errors }">
               <div class="mb-3">
                 <label for="title" class="form-label">標題</label>
                 <v-field id="title" name="標題" type="text" class="form-control" placeholder="請輸入標題" v-model="tempProduct.title" :class="{ 'is-invalid': errors['標題'] }"
@@ -106,7 +106,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
-            <button type="submit" class="btn btn-primary">確認</button>
+            <button type="button" class="btn btn-primary" @click="() =>$emit('update-data')">確認</button>
           </div>
         </div>
       </div>
