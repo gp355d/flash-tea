@@ -74,7 +74,6 @@ export default {
   mixins: [mixin],
   methods: {
     changestatus (tempCoupon) {
-      alert('fff')
       this.$emit('update-coupon', tempCoupon)
     }
   },
