@@ -42,9 +42,9 @@
       <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header p-0 mb-12">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-          <a  href="#">
+          <router-link to="/home"  href="#">
             <img src="../assets/images/logo.svg" alt="logo">
-          </a>
+          </router-link>
         </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
