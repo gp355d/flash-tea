@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import statusStore from './statusStore'
+import statusStore from './StatusStore'
 const status = statusStore()
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const cartStore = defineStore('cart', {

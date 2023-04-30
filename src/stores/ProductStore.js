@@ -1,6 +1,6 @@
 import { defineStore, mapActions } from 'pinia'
-import cartStore from '../stores/cartStore'
-import statusStore from '../stores/statusStore'
+import cartStore from './CartStore'
+import statusStore from './StatusStore'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 const status = statusStore()
