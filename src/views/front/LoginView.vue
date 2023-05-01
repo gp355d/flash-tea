@@ -1,11 +1,10 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center mt-3">
+    <div class="row g-0 justify-content-center mt-3">
       <div class="col-6">
-        <h1>請先登入</h1>
+        <h1 class="fs-2">請先登入</h1>
         <form id="form" class="form-signin" @submit.prevent="check">
           <div class="form-floating mb-3">
-            <!-- v-model="user.username"綁定data的資料 -->
             <input type="email" class="form-control" id="username"
               placeholder="name@example.com" required autofocus v-model="user.username">
             <label for="username">Email address</label>
@@ -25,6 +24,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Swal from 'sweetalert2'
 const { VITE_APP_URL } = import.meta.env

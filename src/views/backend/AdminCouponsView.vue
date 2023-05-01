@@ -1,6 +1,7 @@
 <template>
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="py-3">
+    <h1 class="text-center text-primary fw-bold my-2">優惠券管理</h1>
+    <div class="py-0">
       <div class="text-end mt-4">
         <button class="btn btn-primary" type="button" @click="() => openModal('new')">
           建立新的優惠券
@@ -13,7 +14,7 @@
           <th>名稱</th>
           <th class="text-nowrap">折扣百分比</th>
           <th>到期日</th>
-          <th class="text-nowrap">是否啟用</th>
+          <th class="text-nowrap">啟用狀態</th>
           <th>操作行為</th>
         </tr>
         </thead>
@@ -40,9 +41,9 @@
         </tbody>
         </table>
       </div>
-      <CouponsModal ref="couponModal" :coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon"></CouponsModal>
-      <DelModal ref="coupondelModal" :temp-items="tempCoupon" @delete-data="deleteCoupon" :id=3></DelModal>
-      <Pagination :pages="pagination" @emitPages="getCoupons"></Pagination>
+      <CouponsModal ref="couponModal" :coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon"/>
+      <DelModal ref="coupondelModal" :temp-items="tempCoupon" @delete-data="deleteCoupon" :id=3 />
+      <Pagination :pages="pagination" @emitPages="getCoupons"/>
     </div>
   </main>
 </template>

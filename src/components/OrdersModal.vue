@@ -90,7 +90,7 @@
             </table>
             <div class="d-flex justify-content-end">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="tempOrder.is_paid" @change="checkout(tempOrder)"/>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="tempOrder.is_paid"/>
                 <label class="form-check-label" for="flexCheckDefault">
                   <span v-if="tempOrder.is_paid">已付款</span>
                   <span v-else>未付款</span>
@@ -105,7 +105,7 @@
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
           取消
         </button>
-        <button type="button" class="btn btn-primary" @click="() =>changestatus(tempOrder)">
+        <button type="button" class="btn btn-primary" @click.prevent="() =>changestatus(tempOrder)">
           修改付款狀態
         </button>
       </div>
@@ -130,12 +130,6 @@ export default {
   methods: {
     changestatus (tempOrder) {
       this.$emit('change-status', tempOrder)
-    },
-    checkout () {
-      this.isLoading = true
-      setTimeout(() => {
-        this.isLoading = false
-      }, 2000)
     }
   },
   components: {

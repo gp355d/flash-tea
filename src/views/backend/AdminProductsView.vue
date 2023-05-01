@@ -1,55 +1,56 @@
 <template>
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="py-3">
-    <div class="text-end mt-4">
-      <button class="btn btn-primary" type="button" @click="() => openModal('new')">
-        建立新的產品
-      </button>
+    <h1 class="text-center text-primary fw-bold my-2">商品管理</h1>
+    <div class="py-0">
+      <div class="text-end mt-4">
+        <button class="btn btn-primary" type="button" @click="() => openModal('new')">
+          建立新的產品
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="text-nowrap">分類</th>
+              <th class="text-nowrap">產品名稱</th>
+              <th>原價</th>
+              <th>售價</th>
+              <th class="text-nowrap">啟用狀態</th>
+              <th class="text-nowrap">操作行為</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in products" :key="item.id">
+              <td class="text-nowrap">{{ item.category }}</td>
+              <td class="text-nowrap">{{ item.title }}</td>
+              <td class="text-right">
+                {{ $filters.currency(item.origin_price) }}
+              </td>
+              <td class="text-right">
+                {{ $filters.currency(item.price) }}
+              </td>
+              <td class="text-nowrap">
+                <span v-if="item.is_enabled">啟用</span>
+                <span v-else>未啟用</span>
+              </td>
+              <td class="text-nowrap">
+                <div class="btn-group">
+                  <button class="btn btn-outline-primary btn-sm" type="button" @click="() =>openModal('edit',item)">
+                    編輯
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm" type="button" @click="() =>openModal('delete',item)">
+                    刪除
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ProductsModal ref="productModal" :temp-products="tempProducts" :is-new="isNew" @update-data="updateProduct"/>
+      <DelModal ref="productsdelModal" :temp-items="tempProducts" @delete-data="deleteProduct" :id=1 />
+      <Pagination :pages="pagination" @emitPages="getProducts"/>
     </div>
-    <div class="table-responsive">
-      <table class="table mt-4">
-        <thead>
-          <tr>
-            <th class="text-nowrap">分類</th>
-            <th class="text-nowrap">產品名稱</th>
-            <th>原價</th>
-            <th>售價</th>
-            <th class="text-nowrap">是否啟用</th>
-            <th class="text-nowrap">操作行為</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in products" :key="item.id">
-            <td class="text-nowrap">{{ item.category }}</td>
-            <td class="text-nowrap">{{ item.title }}</td>
-            <td class="text-right">
-              {{ $filters.currency(item.origin_price) }}
-            </td>
-            <td class="text-right">
-              {{ $filters.currency(item.price) }}
-            </td>
-            <td class="text-nowrap">
-              <span v-if="item.is_enabled">啟用</span>
-              <span v-else>未啟用</span>
-            </td>
-            <td class="text-nowrap">
-              <div class="btn-group">
-                <button class="btn btn-outline-primary btn-sm" type="button" @click="() =>openModal('edit',item)">
-                  編輯
-                </button>
-                <button class="btn btn-outline-danger btn-sm" type="button" @click="() =>openModal('delete',item)">
-                  刪除
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <ProductsModal ref="productModal" :temp-products="tempProducts" :is-new="isNew" @update-data="updateProduct"></ProductsModal>
-    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
-    <DelModal ref="productsdelModal" :temp-items="tempProducts" @delete-data="deleteProduct" :id=1></DelModal>
-  </div>
   </main>
 </template>
 

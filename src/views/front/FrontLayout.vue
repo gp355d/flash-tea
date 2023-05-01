@@ -1,21 +1,22 @@
 <template>
   <div class="wrapper">
     <div class="min-vh-100">
-    <NavbarCompoment :num="cartNUm"></NavbarCompoment>
-    <router-view></router-view>
+      <NavbarCompoment :num="cartNUm"/>
+      <router-view/>
     </div>
   </div>
-    <footerCompoment></footerCompoment>
+  <FooterCompoment/>
 </template>
+
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '@/stores/cartStore'
+import cartStore from '@/stores/CartStore'
 import NavbarCompoment from '@/components/NavbarCompoment.vue'
-import footerCompoment from '@/components/FooterCompoment.vue'
+import FooterCompoment from '@/components/FooterCompoment.vue'
 export default {
   components: {
     NavbarCompoment,
-    footerCompoment
+    FooterCompoment
   },
   computed: {
     ...mapState(cartStore, ['cartNUm']) // 取用cart store內的狀態資料(資料)

@@ -1,33 +1,33 @@
 <template>
-<div class="container py-8">
-  <h2 class="text-center text-primary mb-7 fw-bold">{{article.title}}</h2>
-  <!-- <h4>{{$filters.date(article.create_at)}}</h4> -->
-  <loading v-model:active="isLoading"></loading>
-  {{ create_at[0] }}
-  <p>{{ article.description }}</p>
-  <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{ tag }}</span>
-  <div>
-    <router-link class="d-inline-flex align-items-center text-decoration-none" to="/products">
-      <span class="material-icons">keyboard_return</span>繼續購物
-    </router-link>
-  </div>
-  <div class="row g-0 d-flex justify-content-center">
-      <div class="col-md-9">
-        <div class="row g-0">
-          <div class="col-12 d-flex justify-content-center mb-5">
-            <img class="img-fluid object-fit" :src="article.imgurl" alt="">
-          </div>
-          <div class="col-12 d-flex justify-content-center mb-5">
-            <img class="img-fluid object-fit" :src="article.imgurl" alt="">
-          </div>
-          <div class="col-12 d-flex flex-column justify-content-center align-items-start">
-           <div v-html="article.content"></div>
+  <div class="container py-8">
+    <h1 class="text-center text-primary mb-7 fw-bold">{{ article.title }}</h1>
+    <Loading v-model:active="isLoading"/>
+    {{ create_at[0] }}
+    <p>{{ article.description }}</p>
+    <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{ tag }}</span>
+    <div>
+      <router-link class="d-inline-flex align-items-center text-decoration-none" to="/products">
+        <span class="material-icons">keyboard_return</span>繼續購物
+      </router-link>
+    </div>
+    <div class="row g-0 d-flex justify-content-center">
+        <div class="col-md-9">
+          <div class="row g-0">
+            <div class="col-12 d-flex justify-content-center mb-5">
+              <img class="img-fluid object-fit" :src="article.imgurl" alt="">
+            </div>
+            <div class="col-12 d-flex justify-content-center mb-5">
+              <img class="img-fluid object-fit" :src="article.imgurl" alt="">
+            </div>
+            <div class="col-12 d-flex flex-column justify-content-center align-items-start">
+            <div v-html="article.content"></div>
+            </div>
           </div>
         </div>
-      </div>
+    </div>
   </div>
-</div>
 </template>
+
 <script>
 import { mapState } from 'pinia'
 import StatusStore from '@/stores/statusStore'

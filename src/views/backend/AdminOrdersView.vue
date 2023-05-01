@@ -1,6 +1,7 @@
 <template>
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="py-3">
+    <h1 class="text-center text-primary fw-bold my-2">訂單管理</h1>
+    <div class="py-0">
       <div class="table-responsive">
         <table class="table mt-4">
           <thead>
@@ -9,7 +10,7 @@
               <th class="text-nowrap">Email</th>
               <th class="text-nowrap">購買款項</th>
               <th class="text-nowrap">應付金額</th>
-              <th class="text-nowrap">是否付款</th>
+              <th class="text-nowrap">付款狀態</th>
               <th class="text-nowrap">操作行為</th>
             </tr>
           </thead>
@@ -50,9 +51,9 @@
             </template>
           </tbody>
         </table>
-        <OrderModal ref="orderModal" :order="tempOrder" @change-status="updatePaid"></OrderModal>
-        <DelModal ref="orderdelModal" :temp-items="tempOrder" @delete-data="deleteOrder" :id=2></DelModal>
-        <Pagination :pages="pagination" @emitPages="getOrders"></Pagination>
+        <OrderModal ref="orderModal" :order="tempOrder" @change-status="updatePaid"/>
+        <DelModal ref="orderdelModal" :temp-items="tempOrder" @delete-data="deleteOrder" :id=2 />
+        <Pagination :pages="pagination" @emitPages="getOrders"/>
       </div>
     </div>
   </main>
@@ -104,11 +105,24 @@ export default {
       }
     },
     updatePaid (item) {
+      console.trace()
+      if (item.is_paid) {
+        const paidDate = Math.floor(new Date() / 1000)
+        item.paid_date = paidDate
+      } else {
+        item.paid_date = ''
+      }
+      const loader = this.$loading.show()
       const url = `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/admin/order/${item.id}`
       const data = {
-        is_paid: item.is_paid
+        is_paid: item.is_paid,
+        paid_date: item.paid_date
       }
       this.$http.put(url, { data }).then((res) => {
+        this.getOrders()
+        const orderComponent = this.$refs.orderModal
+        orderComponent.hideModal()
+        loader.hide()
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -116,9 +130,6 @@ export default {
           showConfirmButton: false,
           timer: 1500
         })
-        const orderComponent = this.$refs.orderModal
-        orderComponent.hideModal()
-        this.getOrders()
       }).catch((err) => {
         Swal.fire({
           position: 'top-end',
@@ -128,6 +139,7 @@ export default {
           timer: 1500
         })
       })
+      // this.getOrders()
     },
     deleteOrder () {
       const url = `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/admin/order/${this.tempOrder.id}`

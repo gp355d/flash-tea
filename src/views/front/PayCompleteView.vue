@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row g-0 d-flex justify-content-center align-items-center">
       <div class="col-md-6">
-          <div class="shadow-sm p-4 d-flex flex-column justify-content-center align-items-center">
-          <h2 class="text-center text-primary fw-bold noto-serif-font">訂單完成</h2>
+        <div class="shadow-sm p-4 d-flex flex-column justify-content-center align-items-center">
+          <h1 class="text-center text-primary fw-bold noto-serif-font">訂單完成</h1>
           <span class="material-icons text-center mb-6 text-primary" style="font-size: 120px;">
             how_to_reg
           </span>

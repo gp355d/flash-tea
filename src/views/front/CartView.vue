@@ -1,7 +1,7 @@
 <template>
   <div class="container py-8">
-    <loading v-model:active="isLoading"></loading>
-    <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">購物車列表</h2>
+    <Loading v-model:active="isLoading"/>
+    <h1 class="text-center text-primary mb-7 fw-bold noto-serif-font">購物車列表</h1>
     <div class="row g-0 g-md-3 g-lg-4 justify-content-center flex-column flex-md-row mb-4">
       <template v-if="carts.carts?.length">
       <div class="pt-4 pb-3">
@@ -86,14 +86,13 @@
         </div>
       </template>
     </div>
-
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'pinia'
-import cartStore from '../../stores/cartStore'
-import status from '../../stores/statusStore'
+import cartStore from '@/stores/CartStore'
+import status from '@/stores/StatusStore'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env

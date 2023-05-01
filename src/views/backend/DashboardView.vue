@@ -1,16 +1,15 @@
 <template>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap ps-3 shadow">
     <div class="col-md-3 col-lg-12 me-0">
-      <a href="#">
-        <img src="../../assets/images/slogo.svg" alt="" height="50">
-      </a>
+      <router-link  to="/admin/products">
+        <img src="@/assets/images/slogo.svg" alt="" height="50">
+      </router-link>
     </div>
     <button class="navbar-toggler position-absolute d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-
       </div>
     </div>
   </header>
@@ -18,7 +17,7 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" v-if="checkSuccess">
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
-            <h2>請選擇功能</h2>
+            <h2 class="fw-bold fs-5 p-3">請選擇功能</h2>
             <li class="nav-item">
               <router-link class="nav-link" to="/admin/products">商品管理</router-link>
             </li>
@@ -35,12 +34,13 @@
               <router-link class="nav-link" to="/home">回前台首頁</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="logout">登出</a>
+              <a class="nav-link" href="#" @click.prevent="logout">登出</a>
             </li>
           </ul>
         </div>
       </nav>
-      <router-view v-if="checkSuccess"></router-view>
+      <router-view v-if="checkSuccess">
+      </router-view>
   </div>
 </template>
 
@@ -67,7 +67,7 @@ export default {
           if (!res.data.success) {
             Swal.fire({
               position: 'top-end',
-              icon: 'success',
+              icon: 'error',
               title: res.data.message,
               showConfirmButton: false,
               timer: 1500

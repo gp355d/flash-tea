@@ -13,7 +13,6 @@
       z-index: -1;
       "></div>
       <div class="container" style="min-height: 100vh; z-index: 3;">
-        <!-- <NavbarCompoment :num="cartNUm"></NavbarCompoment> -->
         <div class="row g-0 d-flex justify-content-center my-auto">
           <div class="col-md-4 text-center pt-10">
             <img src="../assets/images/slogo2.svg" alt="logo" width="124" class="mb-8">
@@ -27,19 +26,6 @@
       </div>
     </div>
 </template>
-<script>
-// import NavbarCompoment from './NavbarCompoment.vue'
-// import { mapState } from 'pinia'
-// import cartStore from '../stores/cart'
-export default {
-  computed: {
-    // ...mapState(cartStore, ['cartNUm']) // 取用cart store內的狀態資料(資料)
-  },
-  components: {
-    // NavbarCompoment
-  }
-}
-</script>
 
 <style>
 .banner{

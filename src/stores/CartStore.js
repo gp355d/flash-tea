@@ -12,9 +12,9 @@ const cartStore = defineStore('cart', {
       total: 0,
       final_total: 0,
       loadingItem: '',
-      isLoading: false
-
-      // cartNum: 1
+      isLoading: false,
+      coupon_Name: '',
+      discocount: 0
     }
   },
   actions: {
@@ -28,6 +28,10 @@ const cartStore = defineStore('cart', {
         this.cartNUm = data.carts.length
         this.total = res.data.data.total
         this.final_total = res.data.data.final_total
+        this.coupon_Name = data.carts[0]?.coupon?.title
+        this.discocount = data.carts[0]?.coupon?.percent
+        // console.log(data.carts[0].coupon.title)
+
         // loader.hide()
         status.isLoading = false
       })

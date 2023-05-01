@@ -12,10 +12,10 @@
         <div class="modal-body">
           是否刪除
           <template v-if="id===2">
-            <strong class="text-danger">{{tempItems?.id}}</strong>{{ state }}(刪除後將無法恢復)。
+            <strong class="text-danger">{{ tempItems?.id }}</strong>{{ state }}(刪除後將無法恢復)。
           </template>
           <template v-else>
-            <strong class="text-danger">{{tempItems?.title}}</strong>{{ state }}(刪除後將無法恢復)。
+            <strong class="text-danger">{{ tempItems?.title }}</strong>{{ state }}(刪除後將無法恢復)。
           </template>
        </div>
        <div class="modal-footer">

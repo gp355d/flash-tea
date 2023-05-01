@@ -1,6 +1,7 @@
 <template>
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="py-3">
+    <h1 class="text-center text-primary fw-bold my-2">文章管理</h1>
+    <div class="py-0">
       <div class="text-end mt-4">
         <button class="btn btn-primary" type="button" @click="() => openModal(true)">
           建立新的文章
@@ -14,7 +15,7 @@
               <th>作者</th>
               <th>描述</th>
               <th>建立時間</th>
-              <th class="text-nowrap">是否公開</th>
+              <th class="text-nowrap">上架狀態</th>
               <th class="text-nowrap">操作行為</th>
             </tr>
           </thead>
@@ -50,9 +51,9 @@
           </tbody>
         </table>
       </div>
-      <ArticlesModal ref="articleModal" :article="tempArticle" :is-new="isNew" @update-article="updateArticle"></ArticlesModal>
-      <DelModal ref="articledelModal" :temp-items="tempArticle" @delete-data="delArticle" :id=4></DelModal>
-      <Pagination :pages="pagination" @emitPages="getArticles"></Pagination>
+      <ArticlesModal ref="articleModal" :article="tempArticle" :is-new="isNew" @update-article="updateArticle"/>
+      <DelModal ref="articledelModal" :temp-items="tempArticle" @delete-data="delArticle" :id=4 />
+      <Pagination :pages="pagination" @emitPages="getArticles"/>
     </div>
   </main>
 </template>

@@ -3,7 +3,7 @@
     <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center mb-4">
       <div class="col-md-9">
         <div class="row g-0 g-md-3 g-lg-4 mb-4">
-          <h2 class="text-center text-primary fw-bold mb-7 noto-serif-font">鮮品味茶品</h2>
+          <h1 class="text-center text-primary fw-bold mb-7 noto-serif-font">鮮品味茶品</h1>
           <div class="col-md-7 d-flex align-items-center">
             <swiper
                   :style="{
@@ -22,7 +22,6 @@
                     <img class="iobject-fit" :src="image" />
                   </swiper-slide>
             </swiper>
-
           </div>
           <div class="col-md-5">
             <div class="d-flex flex-column justify-content-center h-100">
@@ -150,11 +149,11 @@
             <tbody>
               <tr>
                 <th class="bg-secondary" width="150">茶品名稱:</th>
-                <td>{{product.title}}</td>
+                <td>{{ product.title }}</td>
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">產地:</th>
-                <td>{{product?.specification?.product?.country}}</td>
+                <td>{{ product?.specification?.product?.country }}</td>
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">淨重:</th>
@@ -166,7 +165,7 @@
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">包裝類型:</th>
-                <td>{{product.category}}</td>
+                <td>{{ product.category }}</td>
               </tr>
             </tbody>
           </table>
@@ -179,51 +178,50 @@
       <div class="col-md-9">
         <div class="swiper-container">
           <swiper
-      :slidesPerView="3"
-      :spaceBetween="24"
-      :pagination="{
-        clickable: true,
-      }"
-      :breakpoints="{
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 24,
-        },
-        768: {
-        slidesPerView: 3,
-        spaceBetween: 24
-      },
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        }
-      }"
-      :modules="modules"
-      >
-      <swiper-slide v-for="item in related" :key="item.id">
-        <div class="card d-flex h-100 shadow-sm">
-          <router-link class="text-decoration-none" :to="`/product/${item.id}`">
-            <div class="bg-cover"
-              style="min-height: 200px;cursor: pointer;background-position: center;"
-                @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
-            </div>
-            <div class="card-body p-0">
-              <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
-              <div class="fs-5 lh-30 fw-bold mb-5">
-                <span>{{ $filters.currency(item.price) }}</span>
+          :slidesPerView="3"
+          :spaceBetween="24"
+          :pagination="{
+            clickable: true,
+          }"
+          :breakpoints="{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 24,
+            },
+            768: {
+            slidesPerView: 3,
+            spaceBetween: 24
+          },
+            992: {
+              slidesPerView: 3,
+              spaceBetween: 24,
+            }
+          }"
+          :modules="modules"
+          >
+            <swiper-slide v-for="item in related" :key="item.id">
+              <div class="card d-flex h-100 shadow-sm">
+                <router-link class="text-decoration-none" :to="`/product/${item.id}`">
+                  <div class="bg-cover"
+                    style="min-height: 200px;cursor: pointer;background-position: center;"
+                      @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
+                  </div>
+                  <div class="card-body p-0">
+                    <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
+                    <div class="fs-5 lh-30 fw-bold mb-5">
+                      <span>{{ $filters.currency(item.price) }}</span>
+                    </div>
+                  </div>
+                </router-link>
               </div>
-            </div>
-          </router-link>
-        </div>
-      </swiper-slide>
-    </swiper>
+            </swiper-slide>
+          </swiper>
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
-
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/free-mode'
@@ -232,8 +230,8 @@ import 'swiper/css/thumbs'
 import 'swiper/css/pagination'
 import { Navigation, Thumbs, Pagination } from 'swiper'
 import { mapActions, mapState } from 'pinia'
-import cartStore from '@/stores/cartStore' // 匯入store狀態
-import productStore from '@/stores/productStore'
+import cartStore from '@/stores/CartStore' // 匯入store狀態
+import productStore from '@/stores/ProductStore'
 import Swal from 'sweetalert2'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
