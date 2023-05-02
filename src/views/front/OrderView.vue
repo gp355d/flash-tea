@@ -1,6 +1,6 @@
 <template>
   <div class="container py-8">
-    <Loading v-model:active="isLoading"/>
+    <Loading v-model:active="isLoading" loader="bars"/>
     <h1 class="text-center fw-bold text-primary mb-7 noto-serif-font">填寫訂單</h1>
     <div class="pt-4 pb-3 mb-3">
       <div class="container">

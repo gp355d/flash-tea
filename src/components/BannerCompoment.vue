@@ -1,5 +1,6 @@
 <template>
-    <div class="position-relative" style="margin-top: -64px;">
+    <div class="position-relative" style="margin-top: -64px;" data-aos="fade-up"
+     data-aos-duration="600" data-aos-easing="ease-in-sine">
       <div class="position-absolute" style="
       top:0;
       bottom:0;

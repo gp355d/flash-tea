@@ -1,6 +1,6 @@
 <template>
   <div class="container py-8">
-    <Loading v-model:active="isLoading"/>
+    <Loading v-model:active="isLoading" loader="bars"/>
     <h1 class="text-center text-primary mb-7 fw-bold noto-serif-font">購物車列表</h1>
     <div class="row g-0 g-md-3 g-lg-4 justify-content-center flex-column flex-md-row mb-4">
       <template v-if="carts.carts?.length">

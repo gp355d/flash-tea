@@ -1,6 +1,6 @@
 <template>
   <div class="container py-8">
-    <Loading v-model:active="isLoading"/>
+    <Loading v-model:active="isLoading" loader="bars"/>
     <div class="row g-0 g-md-3 g-lg-4 align-items-center flex-column flex-md-row d-flex justify-content-center">
       <h1 class="text-center text-primary mb-7 fw-bold noto-serif-font">你的收藏茶品</h1>
       <template v-if="followList.list.length > 0">

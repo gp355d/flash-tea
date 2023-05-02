@@ -4,10 +4,12 @@
     <div class="row g-0 g-md-3 g-lg-4 justify-content-center">
       <div class="col-md-9">
         <div class="row g-0 g-md-3 g-lg-4 mb-4 pb-4">
-          <div class="col-lg-6 d-flex justify-content-center">
+          <div class="col-lg-6 d-flex justify-content-center" data-aos="fade-left" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
             <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
           </div>
-          <div class="col-lg-6 d-flex align-items-center p-4">
+          <div class="col-lg-6 d-flex align-items-center p-4" data-aos="fade-left" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
             <div class="p-4 bg-white shadow-sm" style="border-radius:40px;">
               <h3 class="text-center fs-4 fw-bold">黑心茶葉氾濫</h3>
               <p>近幾年市面出現各種黑心茶葉，它可能含有有害化學物質、污染物或人工添加物。這些茶葉可能來自未經嚴格把關的產區，或者是在過程中使用不合法的農藥和化學物質。黑心茶葉不僅可能對人體有害,
@@ -16,10 +18,12 @@
           </div>
         </div>
         <div class="row g-0 g-md-3 g-lg-4 flex-row-reverse d-flex justify-content-center pb-4">
-          <div class="col-lg-6 d-flex justify-content-center">
+          <div class="col-lg-6 d-flex justify-content-center" data-aos="fade-left" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
             <img class="img-fluid object-fit mb-3" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="about-img" style="border-radius:40px;min-height:400px;">
           </div>
-          <div class="col-lg-6 d-flex align-items-center">
+          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-left" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
             <div class="p-4 bg-white shadow-sm" style="border-radius:40px;">
               <h3 class="text-center fs-4 fw-bold">提供給顧客最好的品質</h3>
               <p>我們的品牌初衷是為顧客提供最高品質的產品與服務。我們相信，只有提供最好的產品和服務，才能得到顧客的信任和支持。</p>
@@ -29,16 +33,19 @@
       </div>
     </div>
   </section>
-  <section class="container text-center py-5 bg-secondary">
-    <p>品嘗一杯好茶，紓解工作壓力<br>愛喝茶的你，睡眠總是不好，想要在工作片刻<br>喜歡喝茶，又怕自己買的品質參差不齊</p>
-    <router-link href="#" class="btn btn-primary" to="/products">了解更多</router-link>
+  <section class="container text-center py-5 bg-secondary" data-aos="fade-up" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+    <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
+      <p>品嘗一杯好茶，紓解工作壓力<br>愛喝茶的你，睡眠總是不好，想要在工作片刻<br>喜歡喝茶，又怕自己買的品質參差不齊</p>
+      <router-link href="#" class="btn btn-primary w-25" to="/products">了解更多</router-link>
+    </div>
   </section>
   <section class="container py-5">
     <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
       <div class="col-9">
         <div class="row g-0 g-md-3 g-lg-4">
           <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">三大堅持</h2>
-          <div class="col-lg-4 mb-3 mb-lg-0">
+          <div class="col-lg-4 mb-3 mb-lg-0" data-aos="flip-up" data-aos-easing="ease-in-sine">
               <div class="card h-100 shadow-sm">
                   <div class="d-flex justify-content-center">
                     <span class="material-icons text-primary" style="font-size: 120px;">
@@ -51,7 +58,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-4 mb-3 mb-lg-0">
+          <div class="col-lg-4 mb-3 mb-lg-0" data-aos="flip-up" data-aos-easing="ease-in-sine">
               <div class="card h-100 shadow-sm">
                   <div class="d-flex justify-content-center">
                     <span class="material-icons text-primary" style="font-size: 120px;">
@@ -64,7 +71,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-4 mb-3 mb-lg-0">
+          <div class="col-lg-4 mb-3 mb-lg-0" data-aos="flip-up" data-aos-easing="ease-in-sine">
               <div class="card h-100 shadow-sm">
                   <div class="d-flex justify-content-center">
                     <span class="material-icons text-primary" style="font-size: 120px;">
@@ -82,9 +89,10 @@
     </div>
   </section>
   <section class="container py-5 bg-secondary">
-    <div class="row  g-0 g-md-3 g-lg-4 d-flex justify-content-center p-3">
+    <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center p-3">
       <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">聯絡我們</h2>
-      <div class="col-md-9">
+      <div class="col-md-9" data-aos="fade-up" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
         <div class="row g-0 g-md-3 g-lg-4 flex-row-reverse">
           <div class="col-lg-6 d-flex justify-content-center mb-lg-0 mb-md-3 mb-2">
             <img class="img-fluid object-fit" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="call" style="border-radius:40px;">

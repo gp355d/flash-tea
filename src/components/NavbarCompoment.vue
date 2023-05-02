@@ -1,78 +1,78 @@
 <template>
-      <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-transprent">
-        <div class="container">
-          <router-link to="/home">
-            <img src="../assets/images/logo.svg" alt="logo" />
-          </router-link>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="menu d-flex align-items-center list-unstyled mb-0">
-              <li class="nav-item pe-7">
-                <router-link to="/products" class="link d-block fs-6">茶品介紹</router-link>
-              </li>
-              <li class="nav-item pe-7">
-                <router-link to="/knowledge" class="link d-block fs-6">茶葉知識</router-link>
-              </li>
-              <li class="nav-item pe-7">
-                <router-link to="/about" class="link d-block fs-6">關於我們</router-link>
-              </li>
-              <li class="nav-item pe-7">
-                <router-link to="/QA" class="link d-block fs-6">常見問題</router-link>
-              </li>
-              <li class="nav-item pe-7">
-                <router-link to="/favorite" class="link d-block fs-6">茶品收藏</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link  v-if="num > 0" to="/cart" class="position-relative end-0">
-                  <span class="material-icons fs-4"> shopping_cart </span>
-                  <span
-                    class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ num }}</span>
-                </router-link>
-                <router-link  v-else to="/cart" class="position-relative end-0">
-                  <span class="material-icons fs-4"> shopping_cart </span>
-                </router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header p-0 mb-12">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-          <router-link @click="hideOffcanvas" to="/home"  href="#">
-            <img src="../assets/images/logo.svg" alt="logo">
-          </router-link>
-        </h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-transprent">
+    <div class="container">
+      <router-link to="/home">
+        <img src="../assets/images/logo.svg" alt="logo" />
+      </router-link>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="menu d-flex align-items-center list-unstyled mb-0">
+          <li class="nav-item pe-7">
+            <router-link to="/products" class="link d-block fs-6">茶品介紹</router-link>
+          </li>
+          <li class="nav-item pe-7">
+            <router-link to="/knowledge" class="link d-block fs-6">茶葉知識</router-link>
+          </li>
+          <li class="nav-item pe-7">
+            <router-link to="/about" class="link d-block fs-6">關於我們</router-link>
+          </li>
+          <li class="nav-item pe-7">
+            <router-link to="/QA" class="link d-block fs-6">常見問題</router-link>
+          </li>
+          <li class="nav-item pe-7">
+            <router-link to="/favorite" class="link d-block fs-6">茶品收藏</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link  v-if="num > 0" to="/cart" class="position-relative end-0">
+              <span class="material-icons fs-4"> shopping_cart </span>
+              <span
+                class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ num }}</span>
+            </router-link>
+            <router-link  v-else to="/cart" class="position-relative end-0">
+              <span class="material-icons fs-4"> shopping_cart </span>
+            </router-link>
+          </li>
+        </ul>
       </div>
-      <div class="offcanvas-body p-0">
-        <div>
-          <ul class="menu d-flex flex-column list-unstyled mb-0 offcanvas-nav text-center">
-            <li class="nav-item">
-              <router-link to="/products" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品介紹</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/knowledge" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶葉知識</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/about" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">關於我們</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/QA" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">常見問題</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/favorite" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品收藏</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/cart" class="link d-block fs-6" href="#" @click="hideOffcanvas">購物車</router-link>
-            </li>
-          </ul>
-        </div>
+    </div>
+  </nav>
+  <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">
+    <div class="offcanvas-header p-0 mb-12">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+        <router-link @click="hideOffcanvas" to="/home"  href="#">
+          <img src="../assets/images/logo.svg" alt="logo">
+        </router-link>
+      </h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div>
+        <ul class="menu d-flex flex-column list-unstyled mb-0 offcanvas-nav text-center">
+          <li class="nav-item">
+            <router-link to="/products" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品介紹</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/knowledge" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶葉知識</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">關於我們</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/QA" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">常見問題</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/favorite" class="link d-block fs-6 mb-7" href="#" @click="hideOffcanvas">茶品收藏</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/cart" class="link d-block fs-6" href="#" @click="hideOffcanvas">購物車</router-link>
+          </li>
+        </ul>
       </div>
-        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -87,6 +87,7 @@ export default {
   methods: {
     hideOffcanvas () {
       this.off.hide()
+      document.querySelector('.offcanvas-backdrop').classList.remove('show')
     }
   },
   mounted () {

@@ -73,8 +73,8 @@ const cartStore = defineStore('cart', {
         text: '此動作將無法復原',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#46633D',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#46633D',
         cancelButtonText: '取消',
         confirmButtonText: '確認刪除'
       }).then((result) => {

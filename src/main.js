@@ -22,7 +22,10 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
-app.use(LoadingPlugin)
+app.use(LoadingPlugin, {
+  color: '#46633D',
+  loader: 'bars'
+})
 configure({
   generateMessage: localize({ zh_TW: zhTW }),
   validateOnInput: true

@@ -33,32 +33,32 @@
           <div class="col-md-6 col-lg-4 mb-4 mb-md-3" v-for="product in product" :key="product.id">
             <div class="card border-0 shadow-sm rounded-3">
               <div class="">
-                <router-link :to="`/product/${product.id}`" >
+                <router-link class="text-decoration-none" :to="`/product/${product.id}`" >
                   <img :src="product.imageUrl" height="250" class="card-img-top object-fit mb-0" alt="product-img">
+                  <div class="card-body fw-bold text-primary p-5">
+                    <span class="badge rounded-pill bg-primary">{{ product.category }}</span>
+                    <h5 class="card-title fs-4 lh-29 fw-bold">{{ product.title }}</h5>
+                    <div class="fs-5 lh-30 fw-bold mb-5 position-relative">
+                      <a href="#"  @click.prevent="() => addtoFollow(product.id)" >
+                        <span class="position-absolute end-0 material-icons fs-1" style="cursor: pointer;" v-if="followList.id.indexOf(product.id) === -1">
+                        <!-- 未加入 true -->
+                        favorite_border
+                        </span>
+                        <span class="position-absolute end-0 material-icons fs-1 text-primary" style="cursor: pointer;" v-else>
+                          <!-- 已加入 false-->
+                          favorite
+                        </span>
+                      </a>
+                      <span>{{ $filters.currency(product.price) }}</span>
+                    </div>
+                    <div class="d-grid">
+                      <button :disabled="loadingItem === product.id+'1'" type="button" class="btn btn-outline-primary fw-normal" @click.prevent="() => addToCart(product.id, 1)" >
+                        加入購物車
+                        <i class="fas fa-spinner fa-pulse" v-if="loadingItem === product.id+'1'"></i>
+                      </button>
+                    </div>
+                  </div>
                 </router-link>
-                <div class="card-body fw-bold text-primary p-5">
-                  <span class="badge rounded-pill bg-primary">{{ product.category }}</span>
-                  <h5 class="card-title fs-4 lh-29 fw-bold">{{ product.title }}</h5>
-                  <div class="fs-5 lh-30 fw-bold mb-5 position-relative">
-                    <a href="#"  @click.prevent="() => addtoFollow(product.id)" >
-                      <span class="position-absolute end-0 material-icons fs-1" style="cursor: pointer;" v-if="followList.id.indexOf(product.id) === -1">
-                      <!-- 未加入 true -->
-                      favorite_border
-                      </span>
-                      <span class="position-absolute end-0 material-icons fs-1 text-primary" style="cursor: pointer;" v-else>
-                        <!-- 已加入 false-->
-                        favorite
-                      </span>
-                    </a>
-                    <span>{{ $filters.currency(product.price) }}</span>
-                  </div>
-                  <div class="d-grid">
-                    <button :disabled="loadingItem === product.id+'1'" type="button" class="btn btn-outline-primary fw-normal" @click="() => addToCart(product.id, 1)" >
-                      加入購物車
-                      <i class="fas fa-spinner fa-pulse" v-if="loadingItem === product.id+'1'"></i>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -128,3 +128,8 @@ export default {
   }
 }
 </script>
+<style>
+.card :hover img{
+  transform: scale(1.1);
+}
+</style>

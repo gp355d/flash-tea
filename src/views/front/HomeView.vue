@@ -1,13 +1,15 @@
 <template>
   <BannerCompoment/>
   <div class="container py-10">
-      <h1 class="text-center text-primary fw-bold mb-0 noto-serif-font pb-7">茶品特色</h1>
+      <h1 class="text-center text-primary fw-bold mb-0 noto-serif-font pb-7" data-aos="fade-up" data-aos-easing="ease-in-sine">茶品特色</h1>
       <section class="container mb-240 position-relative" style="margin-bottom:40px">
-        <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative min-h140" >
-        <li class="col-md-8">
+        <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative min-h140">
+        <li class="col-md-8" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="bg-cover border-radiaus indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1437315306147-0923bdb3fc12?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=740&amp;q=80);"></div>
         </li>
-        <li class="col-md-6 position-absolute start-0" style="right: auto;">
+        <li class="col-md-6 position-absolute start-0" style="right: auto;" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="min-height d-flex flex-column justify-content-center align-items-center  align-items-md-start border-radiaus bg-white p-0 p-md-6 shadow-sm">
             <div class="text-center text-md-start">
           <h2 class="fw-bold">烘焙技術</h2>
@@ -19,10 +21,12 @@
       </section>
       <section class="container py-3 mb-240 position-relative" style="margin-bottom:40px">
       <ul class="row d-block d-md-flex align-items-center list-unstyled position-relative min-h140" >
-        <li class="col-md-8">
+        <li class="col-md-8" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="bg-cover border-radiaus indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);"></div>
         </li>
-        <li class="col-md-6 d-md-flex flex-md-column position-absolute end-0">
+        <li class="col-md-6 d-md-flex flex-md-column position-absolute end-0" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="min-height border-radiaus bg-white d-flex flex-column justify-content-center p-0 p-md-6 shadow-sm">
             <div class="text-center text-md-start">
           <h2 class="fw-bold">有機栽培</h2>
@@ -34,10 +38,12 @@
       </section>
       <section class="container py-3 mb-240 position-relative">
       <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative min-h140">
-        <li class="col-md-8">
+        <li class="col-md-8" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="bg-cover border-radiaus indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1546852199-2d8e8c4aaada?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80);"></div>
         </li>
-        <li class="col-md-6 position-absolute start-0" style="right: auto;">
+        <li class="col-md-6 position-absolute start-0" style="right: auto;" data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
           <div class="min-height d-flex flex-column justify-content-center align-items-center  align-items-md-start border-radiaus bg-white p-0 p-md-6 shadow-sm">
             <div class="text-center text-md-start">
           <h2 class="fw-bold">獨特的風味</h2>
@@ -50,12 +56,12 @@
   </div>
   <section class="mb-10">
     <div class="recommender py-7 container-fluid" style="z-index: 2;">
-      <h2 class="text-center text-primary lh-38 fw-bold mb-7 noto-serif-font">熱銷推薦</h2>
-      <p class="text-center">
+      <h2 class="text-center text-primary lh-38 fw-bold mb-7 noto-serif-font" data-aos="fade-up" data-aos-easing="ease-in-sine">熱銷推薦</h2>
+      <p class="text-center" data-aos="fade-right">
         <strong class="h4">結帳時輸入"flash-tea"即享有茶品85折優惠</strong>
       </p>
       <div class="container">
-        <div class="row pb-md-7 pb-0">
+        <div class="row pb-md-7 pb-0" data-aos="zoom-in">
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="recomender card border-0">
               <router-link to="/product/-NQ_SAWzgesFy5tzCHnX" class="text-decoration-none">
@@ -112,8 +118,8 @@
     </div>
   </section>
   <div class="bg-secondary py-8">
-    <div class="container">
-      <h2 class="text-center text-primary lh-38 fw-bold mb-7 noto-serif-font">好評推薦</h2>
+    <div class="container" data-aos="fade-up" data-aos-easing="ease-in-sine">
+      <h2 class="text-center text-primary lh-38 fw-bold mb-7 noto-serif-font" data-aos="fade-up" data-aos-easing="ease-in-sine">好評推薦</h2>
         <div class="row g-0">
           <swiper :slides-per-view="1" :space-between="24" class="pb-10"
             :modules="modules"
