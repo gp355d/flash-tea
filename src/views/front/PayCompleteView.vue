@@ -19,16 +19,16 @@
 export default {
   data () {
     return {
-      isOffcanvasOpen: false
+      // isOffcanvasOpen: false
     }
   },
   methods: {
-    showOffcanvas () {
-      this.isOffcanvasOpen = true
-    },
-    hideOffcanvas () {
-      this.isOffcanvasOpen = false
-    }
+    // showOffcanvas () {
+    //   this.isOffcanvasOpen = true
+    // },
+    // hideOffcanvas () {
+    //   this.isOffcanvasOpen = false
+    // }
   }
 }
 </script>
