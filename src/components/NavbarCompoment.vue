@@ -43,7 +43,7 @@
     <div class="offcanvas-header p-0 mb-12">
       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
         <router-link to="/home">
-          <img src="../assets/images/logo.svg" alt="logo" @click.prevent="toggleOffcanvas(false)">
+          <img src="../assets/images/logo.svg" alt="logo" @click="toggleOffcanvas(false)">
         </router-link>
       </h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
