@@ -2,10 +2,10 @@
   <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-transprent">
     <div class="container">
       <router-link to="/home">
-        <img src="../assets/images/logo.svg" alt="logo" />
+        <img src="../assets/images/logo.svg" alt="logo"/>
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar" @click="showOffcanvas = true">
+        aria-controls="offcanvasNavbar" @click.prevent="toggleOffcanvas(true)">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
@@ -39,41 +39,35 @@
       </div>
     </div>
   </nav>
-      <!-- <div
-      class="offcanvas-backdrop"
-      :class="{show: showOffcanvas}"
-      @click="showOffcanvas = false"
-    ></div> -->
-  <div ref="offcanvs" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" :class="{show: showOffcanvas}" @keydown.escape="showOffcanvas = false">
-    <!-- <div class="offcanvas-backdrop" @click="showOffcanvas = false"></div> -->
+  <div ref="offcanvasElement" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" >
     <div class="offcanvas-header p-0 mb-12">
       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
         <router-link to="/home">
-          <img src="../assets/images/logo.svg" alt="logo">
+          <img src="../assets/images/logo.svg" alt="logo" @click.prevent="toggleOffcanvas(false)">
         </router-link>
       </h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">></button>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
     </div>
     <div class="offcanvas-body p-0">
       <div>
         <ul class="menu d-flex flex-column list-unstyled mb-0 offcanvas-nav text-center">
           <li class="nav-item">
-            <router-link to="/products" class="link d-block fs-6 mb-7">茶品介紹</router-link>
+            <router-link to="/products" class="link d-block fs-6 mb-7" @click.prevent="toggleOffcanvas(false)">茶品介紹</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/knowledge" class="link d-block fs-6 mb-7">茶葉知識</router-link>
+            <router-link to="/knowledge" class="link d-block fs-6 mb-7" @click.prevent="toggleOffcanvas(false)">茶葉知識</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/about" class="link d-block fs-6 mb-7">關於我們</router-link>
+            <router-link to="/about" class="link d-block fs-6 mb-7" @click.prevent="toggleOffcanvas(false)">關於我們</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/QA" class="link d-block fs-6 mb-7">常見問題</router-link>
+            <router-link to="/QA" class="link d-block fs-6 mb-7" @click.prevent="toggleOffcanvas(false)">常見問題</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/favorite" class="link d-block fs-6 mb-7">茶品收藏</router-link>
+            <router-link to="/favorite" class="link d-block fs-6 mb-7" @click.prevent="toggleOffcanvas(false)">茶品收藏</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/cart" class="link d-block fs-6">購物車</router-link>
+            <router-link to="/cart" class="link d-block fs-6" @click.prevent="toggleOffcanvas(false)">購物車</router-link>
           </li>
         </ul>
       </div>
@@ -82,7 +76,7 @@
 </template>
 
 <script>
-// import Offcanvas from 'bootstrap/js/dist/offcanvas'
+import Offcanvas from 'bootstrap/js/dist/offcanvas'
 export default {
   props: ['num'],
   data () {
@@ -91,35 +85,20 @@ export default {
     }
   },
   methods: {
-    // closeOffcanvas (status) {
-    //   this.showOffcanvas = status
-    //   const off = new Offcanvas(this.$refs.offcanvs)
-    //   const backdrop = document.querySelector('.offcanvas-backdrop')
-    //   backdrop.classList.remove('show')
-    //   off.hide()
-    // }
-    // closeOffcanvas () {
-    //   this.showOffcanvas = false
-    //   const backdrop = document.querySelector('.offcanvas-backdrop')
-    //   backdrop.classList.remove('show')
-    // },
-    // handleClickOutside (event) {
-    //   if (this.$refs.offcanvas && !this.$refs.offcanvas.contains(event.target)) {
-    //     this.showOffcanvas = false
-    //   }
-    // }
-  },
-  mounted () {
-    // this.$refs.offcanvs.addEventListener('hidden.bs.offcanvas', () => {
-    //   const backdrop = document.querySelector('.offcanvas-backdrop')
-    //   backdrop.classList.remove('show')
-    // })
-    // document.addEventListener('click', this.handleClickOutside)
-  }
-  // beforeUnmount () {
-  //   document.removeEventListener('click', this.handleClickOutside)
-  // }
+    toggleOffcanvas (value = !this.showOffcanvas) {
+      this.showOffcanvas = value
+      // 取得 offcanvas 實例
+      const offcanvasElement = this.$refs.offcanvasElement
+      const offcanvas = Offcanvas.getInstance(offcanvasElement)
 
+      // 切換 offcanvas 狀態
+      if (!this.showOffcanvas) {
+        offcanvas.hide()
+      } else {
+        offcanvas.show()
+      }
+    }
+  }
 }
 </script>
 <style>
