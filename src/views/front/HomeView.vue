@@ -67,7 +67,7 @@
               <router-link to="/product/-NQ_SAWzgesFy5tzCHnX" class="text-decoration-none">
                 <img src="../../assets/images/prroduct1.jpg" height="360" class="card-img-top object-fit mb-5" alt="product-img">
               <div class="card-body fw-bold text-primary p-5">
-                <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">鮮綠茶</h5>
+                <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">芳香茉莉綠茶</h5>
                 <div class="fs-5 lh-30 fw-bold mb-5">
                   <span class="card-text">NT$</span>
                   <span>400</span>
@@ -84,7 +84,7 @@
               <router-link class="text-decoration-none" to="/product/-N3X3agj1HxsZJ9Tuiab">
                 <img src="../../assets/images/prroduct2.jpg" height="360" class="card-img-top object-fit mb-5" alt="product-img">
                 <div class="card-body fw-bold text-primary p-5">
-                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">蜜香紅茶</h5>
+                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">香醇蜜香紅茶</h5>
                   <div class="fs-5 lh-30 fw-bold mb-5">
                     <span class="card-text">NT$</span>
                     <span>250</span>
@@ -101,7 +101,7 @@
               <router-link class="text-decoration-none" to="/product/-N1qt3UYRAx9zHI4KGjS">
                 <img src="../../assets/images/prroduct3.jpg" height="360" class="card-img-top object-fit mb-5" alt="product-img">
                 <div class="card-body fw-bold text-primary p-5">
-                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">英式奶茶</h5>
+                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">經典英式奶茶</h5>
                   <div class="fs-5 lh-30 fw-bold mb-5">
                     <span class="card-text">NT$</span>
                     <span>250</span>
