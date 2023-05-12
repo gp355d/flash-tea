@@ -14,21 +14,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      // isOffcanvasOpen: false
-    }
-  },
-  methods: {
-    // showOffcanvas () {
-    //   this.isOffcanvasOpen = true
-    // },
-    // hideOffcanvas () {
-    //   this.isOffcanvasOpen = false
-    // }
-  }
-}
-</script>

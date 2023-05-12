@@ -1,10 +1,10 @@
 <template>
   <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-transprent">
     <div class="container">
-      <router-link to="/home">
+      <router-link to="/">
         <img src="../assets/images/logo.svg" alt="logo"/>
       </router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      <button class="navbar-toggler" type="button"
         aria-controls="offcanvasNavbar" @click.prevent="toggleOffcanvas(true)">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,14 +39,14 @@
       </div>
     </div>
   </nav>
-  <div ref="offcanvasElement" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" >
+  <div ref="offcanvasElement" class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header p-0 mb-12">
       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-        <router-link to="/home">
+        <router-link to="/">
           <img src="../assets/images/logo.svg" alt="logo" @click="toggleOffcanvas(false)">
         </router-link>
       </h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
+      <button type="button" class="btn-close text-reset" aria-label="Close" @click.prevent=toggleOffcanvas(false)></button>
     </div>
     <div class="offcanvas-body p-0">
       <div>
@@ -87,13 +87,18 @@ export default {
   methods: {
     toggleOffcanvas (value = !this.showOffcanvas) {
       this.showOffcanvas = value
-      // 取得 offcanvas 實例
       const offcanvasElement = this.$refs.offcanvasElement
-      const offcanvas = Offcanvas.getInstance(offcanvasElement)
-
-      // 切換 offcanvas 狀態
-      if (!this.showOffcanvas) {
+      const offcanvas = new Offcanvas(offcanvasElement)
+      const getoff = document.querySelector('.offcanvas')
+      const backdrop = document.querySelector('.offcanvas-backdrop')
+      const body = document.querySelector('body')
+      if (!this.showOffcanvas && backdrop) {
         offcanvas.hide()
+        getoff.classList.remove('show')
+        getoff.style.transition = '0.3s ease-in-out'
+        backdrop.parentNode.removeChild(backdrop)
+        body.style.overflow = 'scroll'
+        body.style.paddingRight = 0
       } else {
         offcanvas.show()
       }

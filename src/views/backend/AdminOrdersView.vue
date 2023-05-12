@@ -105,7 +105,6 @@ export default {
       }
     },
     updatePaid (item) {
-      console.trace()
       if (item.is_paid) {
         const paidDate = Math.floor(new Date() / 1000)
         item.paid_date = paidDate
@@ -139,7 +138,6 @@ export default {
           timer: 1500
         })
       })
-      // this.getOrders()
     },
     deleteOrder () {
       const url = `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/admin/order/${this.tempOrder.id}`

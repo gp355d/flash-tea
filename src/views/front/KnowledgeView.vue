@@ -3,8 +3,8 @@
     <div class="row g-0 d-flex justify-content-center py-5">
       <div class="col-md-9 p-3">
         <h1 class="text-center text-primary mb-7 fw-bold noto-serif-font">茶葉知識文章</h1>
-        <div class="row mb-5 p-3">
-          <div class="col-md-6 col-lg-4  mb-3 mb-md-0" v-for="article in articles" :key="article.id">
+        <div class="row p-3">
+          <div class="col-md-6 col-lg-4  mb-3 mb-lg-0" v-for="article in articles" :key="article.id">
             <div class="h-100 shadow-sm">
               <img class="object-fit w-100 img-fluid" :src="article.imgurl" alt="article-img" height="300px">
               <div class="content p-3 flex-column align-items-center">
@@ -65,3 +65,10 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .row{
+    .col-md-6:last-child{
+      margin-bottom: 0 !important;
+    }
+  }
+</style>

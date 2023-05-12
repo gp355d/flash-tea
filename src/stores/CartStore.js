@@ -20,7 +20,6 @@ const cartStore = defineStore('cart', {
   actions: {
     // get carts
     getCarts () {
-      // const loader = this.$loading.show()
       status.isLoading = true
       axios.get(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`).then((res) => {
         const { data } = res.data
@@ -28,11 +27,6 @@ const cartStore = defineStore('cart', {
         this.cartNUm = data.carts.length
         this.total = res.data.data.total
         this.final_total = res.data.data.final_total
-        this.coupon_Name = data.carts[0]?.coupon?.title
-        this.discocount = data.carts[0]?.coupon?.percent
-        // console.log(data.carts[0].coupon.title)
-
-        // loader.hide()
         status.isLoading = false
       })
     },

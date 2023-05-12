@@ -31,7 +31,7 @@
               <router-link class="nav-link" to="/admin/articles">文章管理</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/home">回前台首頁</router-link>
+              <router-link class="nav-link" to="/">回前台首頁</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" @click.prevent="logout">登出</a>

@@ -62,17 +62,16 @@
                 <button class="btn btn-primary text-nowrap" type="button" @click.prevent="() => sendCoupon(couponCode)">套用優惠碼</button>
               </div>
               <div class="d-flex justify-content-between fs-5">
-                <template v-if="discoutStatus">
+                <template v-if="discountStatus">
                   <div class="w-100">
-                    <div class="d-flex justify-content-between">
-                      <span>已套用</span>
-                      <span class="fw-bold text-success">{{ coupon_Name }}優惠券</span>
+                    <div class="d-flex">
+                      <span class="fw-bold text-success">已套用優惠券</span>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <span>原始總價</span><span class="fw-bold text-success">{{ $filters.currency(total) }}</span>
+                      <span>原價</span><span class="fw-bold text-success">{{ $filters.currency(total) }}</span>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <span>優惠</span><span class="fw-bold text-success">{{ discocount }}折</span>
+                      <span>優惠折抵</span><span class="fw-bold text-success">{{ discount }}</span>
                     </div>
                     <div class="d-flex justify-content-between">
                       <span>總計</span>
@@ -82,7 +81,7 @@
                 </template>
                 <template v-else>
                   <div class="w-100 d-flex justify-content-between">
-                    <span>總和</span>
+                    <span>總計</span>
                     <span class="fw-bold text-danger">{{ $filters.currency(total) }}</span>
                   </div>
                 </template>
@@ -174,12 +173,13 @@ export default {
         msg: ''
       },
       couponCode: '',
-      // discount: 0,
-      discoutStatus: false
+      discountStatus: false,
+      final_total: 0,
+      discount: 0
     }
   },
   computed: {
-    ...mapState(cartStore, ['carts', 'total', 'isLoading', 'final_total', 'coupon_Name', 'discocount', 'cartNUm']),
+    ...mapState(cartStore, ['carts', 'total', 'isLoading', 'coupon_Name', 'cartNUm']),
     ...mapState(status, ['isLoading'])
   },
   methods: {
@@ -195,11 +195,13 @@ export default {
       }
       this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/coupon`, { data: coupon })
         .then((res) => {
-          this.discoutStatus = res.data.success
+          this.discountStatus = res.data.success
+          this.final_total = Math.round(res.data.data.final_total)
+          this.discount = Math.round(this.final_total - this.total)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: `已套用 ${this.coupon_Name} 優惠券`,
+            title: '已套用優惠券',
             showConfirmButton: false,
             timer: 1500
           })

@@ -95,7 +95,6 @@ import cartStore from '@/stores/CartStore'
 import status from '@/stores/StatusStore'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
@@ -123,30 +122,6 @@ export default {
     ...mapActions(cartStore, ['getCarts', 'deleteItem', 'updateCartItem', 'clearCart']),
     changeLoading (modalLoading) {
       this.loadingItem = modalLoading
-    },
-    sendOrder () {
-      if (this.cart.carts.length === 0) {
-        alert('購物車清單內為空')
-      } else {
-        const data = {
-          user: {
-            name: this.form.name,
-            email: this.form.email,
-            tel: this.form.phone,
-            address: this.form.address
-          },
-          message: this.form.msg
-        }
-        this.$http.post(`${VITE_APP_URL}v2/api/${VITE_APP_PATH}/order`, { data })
-          .then(res => {
-            this.getCarts()
-            this.loadingItem = ''
-            this.$refs.form.resetForm()
-            alert('訂單已送出')
-          }).catch((err) => {
-            alert(err.response.data.message)
-          })
-      }
     },
     validateTelephone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/

@@ -6,7 +6,7 @@ const routes = [
     component: () => import('../views/front/FrontLayout.vue'),
     children: [
       {
-        path: 'home',
+        path: '',
         component: () => import('../views/front/HomeView.vue'),
         meta: { title: '首頁' }
       },
