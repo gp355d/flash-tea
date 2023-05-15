@@ -16,9 +16,6 @@
             <div class="col-12 d-flex justify-content-center mb-5">
               <img class="img-fluid object-fit" :src="article.imgurl" alt="">
             </div>
-            <div class="col-12 d-flex justify-content-center mb-5">
-              <img class="img-fluid object-fit" :src="article.imgurl" alt="">
-            </div>
             <div class="col-12 d-flex flex-column justify-content-center align-items-start">
             <div v-html="article.content"></div>
             </div>
