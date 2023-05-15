@@ -13,16 +13,16 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-3">
-                <label for="imageUrl" class="form-label">主要圖片</label>
-                <input type="text" class="form-control" placeholder="請輸入圖片連結" v-model="tempProduct.imageUrl">
-              </div>
-              <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
-              <div class="mb-3">
-                <label for="customFile" class="form-label">或 上傳圖片
+                <label for="customFile" class="form-label">上傳圖片
                   <i class="fas fa-spinner fa-spin" v-if="status?.fileUploading"></i>
                 </label>
                 <input type="file" id="customFile" class="form-control" ref="fileInput" @change="uploadFile" />
               </div>
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">或  主要圖片</label>
+                <input type="text" class="form-control" placeholder="請輸入圖片連結" v-model="tempProduct.imageUrl">
+              </div>
+              <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
               <h3 class="mb-3">多圖新增</h3>
               <!-- 判斷傳入的值是否為array -->
               <div v-if="Array.isArray(tempProduct.imagesUrl)">
@@ -82,6 +82,42 @@
                   <v-field id="price" name="售價" type="number" min="0" class="form-control" placeholder="請輸入售價" v-model.number="tempProduct.price" :class="{ 'is-invalid': errors['售價'] }"
                   rules="required"></v-field>
                   <error-message name="售價" class="invalid-feedback"></error-message>
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">淨重</label>
+                  <v-field id="price" name="淨重" type="number" min="0" class="form-control" placeholder="請輸入淨重" v-model.number="tempProduct.product_weight" :class="{ 'is-invalid': errors['淨重'] }"
+                  rules="required"></v-field>
+                  <error-message name="淨重" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">淨重單位</label>
+                  <v-field id="price" name="淨重單位" type="text" min="0" class="form-control" placeholder="請輸入淨重單位" v-model="tempProduct.product_unit" :class="{ 'is-invalid': errors['淨重單位'] }"
+                  rules="required"></v-field>
+                  <error-message name="淨重單位" class="invalid-feedback"></error-message>
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">保存期限</label>
+                  <v-field id="price" name="保存期限" type="number" min="0" class="form-control" placeholder="請輸入保存期限" v-model.number="tempProduct.product_year" :class="{ 'is-invalid': errors['保存期限'] }"
+                  rules="required"></v-field>
+                  <error-message name="保存期限" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">保存期限單位</label>
+                  <v-field id="price" name="保存期限單位" type="text" min="0" class="form-control" placeholder="請輸入保存期限單位" v-model="tempProduct.product_year_unit" :class="{ 'is-invalid': errors['保存期限單位'] }"
+                  rules="required"></v-field>
+                  <error-message name="保存期限單位" class="invalid-feedback"></error-message>
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="origin_country" class="form-label">產地</label>
+                  <v-field id="origin_country" name="產地" type="text" min="0" class="form-control" placeholder="請輸入產地" v-model="tempProduct.product_country" :class="{ 'is-invalid': errors['產地'] }"
+                  rules="required"></v-field>
+                  <error-message name="產地" class="invalid-feedback"></error-message>
                 </div>
               </div>
               <hr>

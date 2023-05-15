@@ -4,7 +4,7 @@
       <div class="col-md-9">
         <div class="row g-0 g-md-3 g-lg-4 mb-4">
           <h1 class="text-center text-primary fw-bold mb-7 noto-serif-font">鮮品味茶品</h1>
-          <div class="col-md-7 d-flex align-items-center">
+          <div class="col-md-7 d-flex align-items-center mb-2 mb-lg-0">
             <swiper
                   :style="{
                     '--swiper-navigation-color': '#fff',
@@ -26,41 +26,41 @@
           <div class="col-md-5">
             <div class="d-flex flex-column justify-content-center h-100">
               <div>
-                <div class="d-flex align-items-center">
-                  <h3 class="h3 text-nowrap me-2 fw-bold">{{ product.title }}</h3>
+                <div class="d-flex align-items-center mb-2">
+                  <h3 class="h3 text-nowrap me-2 mb-0 fw-bold">{{ product.title }}</h3>
                   <a
                     href="#"
                     class="d-flex mb-md-0 align-items-center text-decoration-none"  @click.prevent="() => addtoFollow(product.id)" style="cursor: pointer;"
                   >
-                  <span class="material-icons fs-1" v-if="followList.id.indexOf(product.id) === -1">
+                  <span class="material-icons fs-2" v-if="followList.id.indexOf(product.id) === -1">
                   <!-- 未加入 true -->
                   favorite_border
                   </span>
-                  <span class="material-icons fs-1 text-primary" style="cursor: pointer;" v-else>
+                  <span class="material-icons fs-2 text-primary" style="cursor: pointer;" v-else>
                     <!-- 已加入 false-->
                     favorite
                   </span>
                   </a>
                 </div>
-                <span class="badge rounded-pill bg-primary">{{
+                <span class="badge rounded-pill bg-primary mb-2">{{
                   product.category
                 }}</span>
-                <p v-html="product.description"></p>
+                <p class="fs-5" v-html="product.description"></p>
                 <div class="d-flex flex-column h-100">
                   <div class="align-self-end">
                     <div class="text-decoration-line-through fs-4">
-                      <span>原價</span>
+                      <span class="me-2">原價</span>
                       <span>{{ $filters.currency(product.origin_price) }}</span>
                     </div>
                     <div class="fs-2 mb-2 fw-bold text-danger">
-                      <span class="">特價</span>
+                      <span class="me-2">特價</span>
                       <span>{{ $filters.currency(product.price) }}</span>
                     </div>
                   </div>
                   <div class="d-flex justify-content-end">
-                    <select class="form-select" name="qty" v-model.number="itemNum">
+                    <select class="form-select me-2" name="qty" v-model.number="itemNum">
                       <option :value="num" v-for="num in 5" :key="num + '0'">
-                        {{ num }}
+                        {{ num }}{{ product.unit }}
                       </option>
                     </select>
                     <button
@@ -153,15 +153,15 @@
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">產地:</th>
-                <td>{{ product?.specification?.product?.country }}</td>
+                <td>{{ product.product_country }}</td>
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">淨重:</th>
-                <td>{{ product?.specification?.weight }}{{ product?.specification?.unit }}</td>
+                <td>{{ product.product_weight }}{{ product.product_unit }}</td>
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">保存期限:</th>
-                <td>{{ product?.specification?.product?.year }}{{ product?.specification?.product?.unit }}</td>
+                <td>{{ product.product_year }}{{ product.product_year_unit }}</td>
               </tr>
               <tr>
                 <th class="bg-secondary" width="150">包裝類型:</th>
@@ -174,15 +174,15 @@
       </div>
     </div>
     <div class="row g-0 g-md-3 g-lg-4 d-flex justify-content-center">
-      <h2 class="text-center text-primary mb-7 fw-bold noto-serif-font">相關商品</h2>
+      <h2 class="text-center text-primary mb-7 mb-md-2 fw-bold noto-serif-font">相關商品</h2>
       <div class="col-md-9">
         <div class="swiper-container">
-          <swiper
+          <swiper class="pb-8"
           :slidesPerView="3"
           :spaceBetween="24"
-          :pagination="{
-            clickable: true,
-          }"
+          :modules="modules"
+          :pagination="{ clickable: true }"
+          navigation
           :breakpoints="{
             320: {
               slidesPerView: 1,
@@ -197,7 +197,6 @@
               spaceBetween: 24,
             }
           }"
-          :modules="modules"
           >
             <swiper-slide v-for="item in related" :key="item.id">
               <div class="card d-flex h-100 shadow-sm">
@@ -206,10 +205,11 @@
                     style="min-height: 200px;cursor: pointer;background-position: center;"
                       @click.prevent="() =>render(item.id)" :style="{backgroundImage:`url(${item.imageUrl})`} ">
                   </div>
-                  <div class="card-body p-0">
+                  <div class="card-body p-2">
                     <h5 class="card-title fs-4 lh-29 fw-bold">{{ item.title }}</h5>
+                    <p class="fw-normal fs-6 mb-2"><span class="d-block" style="height: 48px;line-height:1.2;vertical-align: middle;">{{ item.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span></p>
                     <div class="fs-5 lh-30 fw-bold mb-5">
-                      <span>{{ $filters.currency(item.price) }}</span>
+                      <span class="text-danger">{{ $filters.currency(item.price) }}</span>
                     </div>
                   </div>
                 </router-link>
@@ -368,6 +368,6 @@ body {
   opacity: 1;
 }
 .card:hover {
-  transform: scale(1.1);
+  opacity: .3;
 }
 </style>

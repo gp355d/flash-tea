@@ -84,7 +84,7 @@
               <router-link class="text-decoration-none" to="/product/-N3X3agj1HxsZJ9Tuiab">
                 <img src="../../assets/images/prroduct2.jpg" height="360" class="card-img-top object-fit mb-5" alt="product-img">
                 <div class="card-body fw-bold text-primary p-5">
-                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">香醇蜜香紅茶</h5>
+                  <h5 class="card-title fs-4 lh-29 fw-bold noto-serif-font">蜜香紅茶</h5>
                   <div class="fs-5 lh-30 fw-bold mb-5">
                     <span class="card-text">NT$</span>
                     <span>250</span>
@@ -235,9 +235,6 @@ export default {
   height: auto;
 }
 .recomender.card:hover img {
-  opacity: 0.3;
-}
-img .card:hover {
   opacity: 0.3;
 }
 </style>

@@ -36,20 +36,21 @@
                 <router-link class="text-decoration-none" :to="`/product/${product.id}`" >
                   <img :src="product.imageUrl" height="250" class="card-img-top object-fit mb-0" alt="product-img">
                   <div class="card-body fw-bold text-primary p-5">
-                    <span class="badge rounded-pill bg-primary">{{ product.category }}</span>
+                    <span class="badge rounded-pill bg-primary mb-2">{{ product.category }}</span>
                     <h5 class="card-title fs-4 lh-29 fw-bold">{{ product.title }}</h5>
+                    <span class="fw-normal d-block fs-6 mb-3" style="height: 48px;vertical-align: middle;">{{ product.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span>
                     <div class="fs-5 lh-30 fw-bold mb-5 position-relative">
                       <a href="#"  @click.prevent="() => addtoFollow(product.id)" >
-                        <span class="position-absolute end-0 material-icons fs-1" style="cursor: pointer;" v-if="followList.id.indexOf(product.id) === -1">
+                        <span class="position-absolute end-0 material-icons fs-2" style="cursor: pointer;" v-if="followList.id.indexOf(product.id) === -1">
                         <!-- 未加入 true -->
                         favorite_border
                         </span>
-                        <span class="position-absolute end-0 material-icons fs-1 text-primary" style="cursor: pointer;" v-else>
+                        <span class="position-absolute end-0 material-icons fs-2 text-primary" style="cursor: pointer;" v-else>
                           <!-- 已加入 false-->
                           favorite
                         </span>
                       </a>
-                      <span>{{ $filters.currency(product.price) }}</span>
+                      <span class="fs-3 text-danger fw-bolder">{{ $filters.currency(product.price) }}</span>
                     </div>
                     <div class="d-grid">
                       <button :disabled="loadingItem === product.id+'1'" type="button" class="btn btn-outline-primary fw-normal" @click.prevent="() => addToCart(product.id, 1)" >
@@ -128,8 +129,11 @@ export default {
   }
 }
 </script>
-<style>
-.card :hover img{
-  transform: scale(1.1);
+<style scoped>
+.card:hover img{
+  opacity: .3;
+}
+.card:active img{
+  opacity: .3;
 }
 </style>

@@ -53,7 +53,8 @@
     &:focus {
       border-color: $nav-tabs-link-hover-border-color;
       // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
-      isolation: isolate;
+      isolation: isolate;  
+      border-radius: 0 !important;
     }
 
     &.disabled {
