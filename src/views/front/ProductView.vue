@@ -13,7 +13,7 @@
                   :spaceBetween="10"
                   :thumbs="{ swiper: thumbsSwiper }"
                   :modules="modules"
-                  class="mySwiper2"
+                  class="mySwiper-big"
                 >
                   <swiper-slide
                     v-for="(image, i) in product.imagesUrl"
@@ -328,7 +328,7 @@ body {
   height: 100%;
 }
 
-.mySwiper2 .swiper-slide img,
+.mySwiper-big .swiper-slide img,
 .mySwiper .swiper-slide img {
   display: block;
   width: 100%;
@@ -337,12 +337,12 @@ body {
 }
 
 /* 商品大圖切換外框 */
-.mySwiper2 {
+.mySwiper-big {
   width: 100%;
   height: 400px;
 }
 
-.mySwiper2 .swiper-slide {
+.mySwiper-big .swiper-slide {
   background-size: cover;
   background-position: center;
 }
@@ -351,13 +351,8 @@ body {
   box-sizing: border-box;
   padding: 10px 0;
 }
-
 .mySwiper .swiper-slide {
   width: 25%;
-  height: 100%;
-  opacity: 0.4;
-}
-.mySwiper .swiper-slide {
   background-size: cover;
   background-position: center;
   height: auto;

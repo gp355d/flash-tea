@@ -225,12 +225,6 @@ export default {
 </script>
 
 <style scoped>
-.indexAboutImg{
-  border-radius: 40px;
-  background-image: url('../../assets/images/intro1.jpg');
-  background-position: center;
-}
-
 .swiper-slide{
   height: auto;
 }

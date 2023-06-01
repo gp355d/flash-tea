@@ -27,17 +27,3 @@
       </div>
     </div>
 </template>
-
-<style>
-.banner{
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  /* width: 100%; */
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 2;
-}
-</style>

@@ -1,10 +1,7 @@
 @import 'bootstrap/scss/functions';
 @import './variables';
 @import 'bootstrap/scss/bootstrap';
-// @import "bootstrap/scss/mixins";
-// @import "bootstrap/scss/root";
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap');
 @import "bootstrap/scss/functions";
 @import "./variables";
@@ -14,11 +11,7 @@
 @import "./nav";
 @import "./offcanvas";
 @import "bootstrap/scss/bootstrap";
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
+
 
 /*
  * Sidebar
@@ -37,12 +30,6 @@
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-
-// @media (max-width: 767.98px) {
-//   .sidebar {
-//     top: 2rem;
-//   }
-// }
 
 .sidebar-sticky {
   position: relative;
@@ -93,24 +80,6 @@
 }
 
 .navbar .navbar-toggler {
-  // top: .25rem;
   right: 1rem;
   transform: translateY(0);
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }

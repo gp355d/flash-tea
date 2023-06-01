@@ -1,8 +1,3 @@
-.index__h1 {
-  color: #00cc99;
-  font-size: 20px;
-  font-weight: 400;
-}
 #app{
   display: flex;
   flex-direction: column;
@@ -13,6 +8,19 @@
   flex-direction: column;
   flex-grow: 1; /*可佔滿垂直剩餘的空間*/
   // min-height: 100%;
+}
+.menu{
+  .link{
+    text-decoration: none;
+    padding: 8px 12px;
+    &:hover{
+      color: $white;
+      padding: 8px 12px;
+      background-color: #929966;
+      display: block;
+      border-radius: 4px;;
+    }
+  }
 }
 .footer {
   margin-top: auto;
@@ -36,17 +44,17 @@
     /* transform: translateY(-50%)!important; */
   }
 }
-  @media (max-width: 768px) { 
-    .mb-240{
-      margin-bottom: 240px !important;
-    }
-    .min-h140{
-      min-height:140px;
-    }
-    .min-height{
-      min-height: 140px;
-    }
+@media (max-width: 768px) { 
+  .mb-240{
+    margin-bottom: 240px !important;
   }
+  .min-h140{
+    min-height:140px;
+  }
+  .min-height{
+    min-height: 140px;
+  }
+}
 .swiper {
   width: 100%;
   height: 100%;
@@ -75,27 +83,27 @@
     background-size: 100% 100%;
   }
 }
+.swiper-pagination{
+  position: absolute;
+  bottom: 0;
+  left: 50% !important;
+  width: 20% !important;
+  transform: translateX(-50%) !important;
+  text-align: center;
+  z-index: 3;
+}
+@media (max-width: 768px) {
   .swiper-pagination{
-    position: absolute;
-    bottom: 0;
-    left: 50% !important;
-    width: 20% !important;
-    transform: translateX(-50%) !important;
-    text-align: center;
-    z-index: 3;
+    display: none !important;
   }
-  @media (max-width: 768px) {
-    .swiper-pagination{
-      display: none !important;
-    }
-  }
-  .swiper-button-next, .swiper-button-prev {
-    position: absolute !important;
-    color: #46633D !important;
-    top: var(--swiper-navigation-top-offset,94%) !important;
-  }
-  .swiper-button-next::after, .swiper-button-prev::after {
-    font-size: 32px !important;
+}
+.swiper-button-next, .swiper-button-prev {
+  position: absolute !important;
+  color: #46633D !important;
+  top: var(--swiper-navigation-top-offset,94%) !important;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 32px !important;
 }
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
   bottom: var(--swiper-pagination-bottom,14px) !important;

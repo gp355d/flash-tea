@@ -1,6 +1,6 @@
 <template>
   <div class="container py-8">
-    <h1 class="text-center text-primary mb-7 fw-bold">{{ article.title }}</h1>
+    <h1 class="text-center text-primary mb-7 fw-bold noto-serif-font">{{ article.title }}</h1>
     <Loading v-model:active="isLoading"/>
     {{ create_at[0] }}
     <p>{{ article.description }}</p>
